@@ -29,6 +29,23 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#374151;font-size:16px
   --border:#e5e7eb;
 }
 
+/* ── PAGE OVERLAY ── */
+#page-overlay{
+  position:fixed;inset:0;z-index:900;
+  background:var(--navy-dark);
+  transform:translateY(100%);
+  pointer-events:none;
+  will-change:transform;
+}
+#page-overlay::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--gold);
+}
+@keyframes pgIn{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes pgOut{from{transform:translateY(0)}to{transform:translateY(-100%)}}
+#page-overlay.pg-in{animation:pgIn .42s cubic-bezier(0.76,0,0.24,1) forwards;pointer-events:all;}
+#page-overlay.pg-out{animation:pgOut .42s cubic-bezier(0.76,0,0.24,1) forwards;}
+
 /* ── HEADER WRAPPER ── */
 #main-header{
   position:fixed;top:0;left:0;right:0;z-index:200;
@@ -1553,6 +1570,9 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
   </div>
 </div>
 
+<!-- PAGE OVERLAY -->
+<div id="page-overlay"></div>
+
 <!-- WA FLOAT -->
 <a href="https://wa.me/526142396073" class="wa-float" title="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1638,8 +1658,7 @@ const PAGE_MAP={
   '#nosotros':'nosotros','#faq':'nosotros',
   '#contacto':'contacto'
 };
-function showPage(name){
-  closeMobileMenu();
+function _switchContent(name){
   document.querySelectorAll('[data-page]').forEach(s=>{s.classList.remove('page-active');s.style.paddingTop='';});
   document.querySelectorAll('[data-page="'+name+'"]').forEach(s=>{
     s.classList.add('page-active');
@@ -1652,28 +1671,35 @@ function showPage(name){
       });
     }
   });
-  document.querySelectorAll('.nav-links a').forEach(a=>{
+  document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a=>{
     a.classList.toggle('nav-active', PAGE_MAP[a.getAttribute('href')]===name);
   });
-  document.querySelectorAll('.mobile-menu a').forEach(a=>{
-    a.classList.toggle('nav-active', PAGE_MAP[a.getAttribute('href')]===name);
-  });
-  // Espacio bajo el header fijo en páginas sin hero
   if(name!=='inicio'){
     const firstSection=document.querySelector('[data-page="'+name+'"]');
     const hh=window.innerWidth<=768?'84px':'114px';
     if(firstSection)firstSection.style.paddingTop=hh;
   }
-  // Trackear página activa para el scroll listener
   currentPage=name;
-  // Nav transparente solo en inicio (tiene hero de fondo), sólido en el resto
-  if(name==='inicio'){
-    nav.classList.toggle('scrolled', window.scrollY>80);
-  } else {
-    nav.classList.add('scrolled');
-  }
+  if(name==='inicio'){nav.classList.toggle('scrolled',window.scrollY>80);}
+  else{nav.classList.add('scrolled');}
   window.scrollTo(0,0);
+  mainHeader.style.transform='translateY(0)';
   history.pushState(null,'','#'+name);
+}
+function showPage(name){
+  closeMobileMenu();
+  const ov=document.getElementById('page-overlay');
+  // Overlay entra
+  ov.classList.remove('pg-out');
+  ov.classList.add('pg-in');
+  setTimeout(()=>{
+    // Cambio de contenido mientras el overlay cubre la pantalla
+    _switchContent(name);
+    // Overlay sale
+    ov.classList.remove('pg-in');
+    ov.classList.add('pg-out');
+    setTimeout(()=>ov.classList.remove('pg-out'),420);
+  },420);
 }
 document.addEventListener('click',e=>{
   const a=e.target.closest('a[href]');
@@ -1685,8 +1711,8 @@ window.addEventListener('popstate',()=>{
   const page=PAGE_MAP[location.hash]||'inicio';
   showPage(page);
 });
-// Init
-showPage(PAGE_MAP[location.hash]||'inicio');
+// Init (sin overlay en carga inicial)
+_switchContent(PAGE_MAP[location.hash]||'inicio');
 
 // Filtros obituarios
 let activeFilter='todas';
