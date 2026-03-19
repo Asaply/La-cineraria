@@ -620,6 +620,12 @@ footer{background:#0d1a30;padding:4rem 0 2rem;}
 .obit-modal-btn-outline svg{width:18px;height:18px;fill:currentColor;}
 .obit-modal-btn-outline:hover{border-color:var(--navy);color:var(--navy);}
 
+/* ── MULTI-PAGE ── */
+[data-page]{display:none;}
+[data-page].page-active{display:block;}
+.nav-links a.nav-active{color:var(--gold)!important;}
+nav.scrolled .nav-links a.nav-active{color:var(--navy)!important;font-weight:700;}
+
 /* ── SCROLL ANIMATIONS ── */
 @keyframes animFadeIn{from{opacity:0}to{opacity:1}}
 @keyframes animSlideBottom{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
@@ -711,7 +717,7 @@ footer{background:#0d1a30;padding:4rem 0 2rem;}
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" data-page="inicio">
   <div class="hero-img"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -728,7 +734,7 @@ footer{background:#0d1a30;padding:4rem 0 2rem;}
 </section>
 
 <!-- NOSOTROS -->
-<section class="section" id="nosotros">
+<section class="section" id="nosotros" data-page="nosotros">
   <div class="container">
     <div class="about-grid">
       <div class="about-img-wrap">
@@ -757,7 +763,7 @@ footer{background:#0d1a30;padding:4rem 0 2rem;}
 </section>
 
 <!-- SERVICIOS -->
-<section class="section section-alt" id="servicios">
+<section class="section section-alt" id="servicios" data-page="servicios">
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Lo que ofrecemos</div>
@@ -819,7 +825,7 @@ footer{background:#0d1a30;padding:4rem 0 2rem;}
 </section>
 
 <!-- UBICACIONES -->
-<section class="section" id="ubicaciones">
+<section class="section" id="ubicaciones" data-page="sucursales">
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Encuéntrenos</div>
@@ -910,7 +916,7 @@ footer{background:#0d1a30;padding:4rem 0 2rem;}
 </section>
 
 <!-- POR QUÉ NOSOTROS -->
-<section class="why-section">
+<section class="why-section" data-page="inicio">
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Nuestra diferencia</div>
@@ -954,7 +960,7 @@ footer{background:#0d1a30;padding:4rem 0 2rem;}
 </section>
 
 <!-- PROCESO -->
-<section class="section section-alt">
+<section class="section section-alt" data-page="inicio">
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Nuestro proceso</div>
@@ -994,7 +1000,7 @@ footer{background:#0d1a30;padding:4rem 0 2rem;}
 </section>
 
 <!-- OBITUARIOS -->
-<section class="obits-section" id="obituarios">
+<section class="obits-section" id="obituarios" data-page="obituarios">
   <div class="obits-hero">
     <div class="obits-hero-overlay"></div>
     <div class="obits-hero-content">
@@ -1190,7 +1196,7 @@ footer{background:#0d1a30;padding:4rem 0 2rem;}
 </section>
 
 <!-- FAQ -->
-<section class="section" id="faq">
+<section class="section" id="faq" data-page="nosotros">
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Preguntas frecuentes</div>
@@ -1242,7 +1248,7 @@ footer{background:#0d1a30;padding:4rem 0 2rem;}
 </section>
 
 <!-- CONTACTO -->
-<section class="contact-section" id="contacto">
+<section class="contact-section" id="contacto" data-page="contacto">
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Estamos para usted</div>
@@ -1489,51 +1495,73 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 
 // ── SCROLL ANIMATIONS ──
-(function(){
-  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  const obs=new IntersectionObserver((entries)=>{
+let animObserver=null;
+if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+  animObserver=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
-      if(e.isIntersecting){e.target.classList.add('is-visible');obs.unobserve(e.target);}
+      if(e.isIntersecting){e.target.classList.add('is-visible');animObserver.unobserve(e.target);}
     });
   },{threshold:0.13});
-
-  function reg(el,type,delay){
+  function regAnim(el,type,delay){
     el.classList.add('anim','anim-'+type);
     if(delay)el.style.animationDelay=delay+'s';
-    obs.observe(el);
+    animObserver.observe(el);
   }
-
-  // Hero content
   const heroContent=document.querySelector('.hero-content');
-  if(heroContent)reg(heroContent,'bottom',0.2);
-
-  // Sección Nosotros
+  if(heroContent)regAnim(heroContent,'bottom',0.2);
   const aboutImg=document.querySelector('.about-img-wrap');
   const aboutTxt=document.querySelector('.about-content');
-  if(aboutImg)reg(aboutImg,'left');
-  if(aboutTxt)reg(aboutTxt,'right',0.15);
+  if(aboutImg)regAnim(aboutImg,'left');
+  if(aboutTxt)regAnim(aboutTxt,'right',0.15);
+  document.querySelectorAll('.section-header').forEach(el=>regAnim(el,'bottom'));
+  document.querySelectorAll('.service-card').forEach((el,i)=>regAnim(el,'bottom',i*0.07));
+  document.querySelectorAll('.loc-card').forEach((el,i)=>regAnim(el,'bottom',i*0.1));
+  document.querySelectorAll('.why-card').forEach((el,i)=>regAnim(el,'bottom',i*0.08));
+  document.querySelectorAll('.process-step').forEach((el,i)=>regAnim(el,'bottom',i*0.1));
+  document.querySelectorAll('.faq-item').forEach((el,i)=>regAnim(el,'bottom',i*0.06));
+  document.querySelectorAll('.obit-card').forEach((el,i)=>regAnim(el,'bottom',i*0.08));
+}
 
-  // Section headers
-  document.querySelectorAll('.section-header').forEach(el=>reg(el,'bottom'));
-
-  // Service cards — stagger
-  document.querySelectorAll('.service-card').forEach((el,i)=>reg(el,'bottom',i*0.07));
-
-  // Location cards — stagger
-  document.querySelectorAll('.loc-card').forEach((el,i)=>reg(el,'bottom',i*0.1));
-
-  // Why cards — stagger
-  document.querySelectorAll('.why-card').forEach((el,i)=>reg(el,'bottom',i*0.08));
-
-  // Process steps — stagger
-  document.querySelectorAll('.process-step').forEach((el,i)=>reg(el,'bottom',i*0.1));
-
-  // FAQ items — stagger
-  document.querySelectorAll('.faq-item').forEach((el,i)=>reg(el,'bottom',i*0.06));
-
-  // Obit cards — stagger
-  document.querySelectorAll('.obit-card').forEach((el,i)=>reg(el,'bottom',i*0.08));
-})();
+// ── MULTI-PAGE ──
+const PAGE_MAP={
+  '#':'inicio','#inicio':'inicio',
+  '#servicios':'servicios',
+  '#obituarios':'obituarios',
+  '#ubicaciones':'sucursales','#sucursales':'sucursales',
+  '#nosotros':'nosotros','#faq':'nosotros',
+  '#contacto':'contacto'
+};
+function showPage(name){
+  document.querySelectorAll('[data-page]').forEach(s=>s.classList.remove('page-active'));
+  document.querySelectorAll('[data-page="'+name+'"]').forEach(s=>{
+    s.classList.add('page-active');
+    if(animObserver){
+      requestAnimationFrame(()=>{
+        s.querySelectorAll('.anim').forEach(el=>{
+          el.classList.remove('is-visible');
+          animObserver.observe(el);
+        });
+      });
+    }
+  });
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.toggle('nav-active', PAGE_MAP[a.getAttribute('href')]===name);
+  });
+  window.scrollTo(0,0);
+  history.pushState(null,'','#'+name);
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href]');
+  if(!a)return;
+  const h=a.getAttribute('href');
+  if(h in PAGE_MAP){e.preventDefault();showPage(PAGE_MAP[h]);}
+});
+window.addEventListener('popstate',()=>{
+  const page=PAGE_MAP[location.hash]||'inicio';
+  showPage(page);
+});
+// Init
+showPage(PAGE_MAP[location.hash]||'inicio');
 
 // Filtros obituarios
 let activeFilter='todas';
