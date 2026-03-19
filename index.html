@@ -662,9 +662,9 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-8.5px) rotate(-45deg);}
 
 .mobile-menu{
-  display:none;position:fixed;top:84px;left:0;right:0;z-index:98;
+  display:none;position:fixed;top:84px;left:0;right:0;z-index:99;
   background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.15);
-  flex-direction:column;
+  flex-direction:column;height:auto!important;
 }
 .mobile-menu.open{display:flex;}
 .mobile-menu a{
@@ -801,13 +801,13 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 </nav>
 <!-- MOBILE MENU -->
 <div class="mobile-overlay" id="mobile-overlay" onclick="closeMobileMenu()"></div>
-<nav class="mobile-menu" id="mobile-menu">
+<div class="mobile-menu" id="mobile-menu">
   <a href="#servicios">Servicios</a>
   <a href="#obituarios">Obituarios</a>
   <a href="#sucursales">Sucursales</a>
   <a href="#nosotros">Nosotros</a>
   <a href="#contacto">Contacto</a>
-</nav>
+</div>
 
 <!-- HERO -->
 <section class="hero" data-page="inicio">
