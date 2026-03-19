@@ -1547,6 +1547,12 @@ function showPage(name){
   document.querySelectorAll('.nav-links a').forEach(a=>{
     a.classList.toggle('nav-active', PAGE_MAP[a.getAttribute('href')]===name);
   });
+  // Nav transparente solo en inicio (tiene hero de fondo), sólido en el resto
+  if(name==='inicio'){
+    nav.classList.toggle('scrolled', window.scrollY>80);
+  } else {
+    nav.classList.add('scrolled');
+  }
   window.scrollTo(0,0);
   history.pushState(null,'','#'+name);
 }
