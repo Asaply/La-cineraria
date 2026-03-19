@@ -1535,7 +1535,7 @@ const PAGE_MAP={
   '#contacto':'contacto'
 };
 function showPage(name){
-  document.querySelectorAll('[data-page]').forEach(s=>s.classList.remove('page-active'));
+  document.querySelectorAll('[data-page]').forEach(s=>{s.classList.remove('page-active');s.style.paddingTop='';});
   document.querySelectorAll('[data-page="'+name+'"]').forEach(s=>{
     s.classList.add('page-active');
     if(animObserver){
@@ -1550,6 +1550,11 @@ function showPage(name){
   document.querySelectorAll('.nav-links a').forEach(a=>{
     a.classList.toggle('nav-active', PAGE_MAP[a.getAttribute('href')]===name);
   });
+  // Espacio bajo el header fijo en páginas sin hero
+  if(name!=='inicio'){
+    const firstSection=document.querySelector('[data-page="'+name+'"]');
+    if(firstSection)firstSection.style.paddingTop='114px';
+  }
   // Trackear página activa para el scroll listener
   currentPage=name;
   // Nav transparente solo en inicio (tiene hero de fondo), sólido en el resto
