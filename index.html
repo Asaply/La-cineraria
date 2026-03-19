@@ -621,8 +621,8 @@ footer{background:#0d1a30;padding:4rem 0 2rem;}
 .obit-modal-btn-outline:hover{border-color:var(--navy);color:var(--navy);}
 
 /* ── MULTI-PAGE ── */
-[data-page]{display:none;}
-[data-page].page-active{display:block;}
+[data-page]:not(.page-active){display:none!important;}
+.hero.page-active{display:flex!important;}
 .nav-links a.nav-active{color:var(--gold)!important;}
 nav.scrolled .nav-links a.nav-active{color:var(--navy)!important;font-weight:700;}
 
