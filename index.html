@@ -111,9 +111,9 @@ nav.scrolled .nav-social svg{fill:var(--navy);}
   height:100vh;min-height:600px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
 }
-.hero-img{
+.hero-video{
   position:absolute;inset:0;z-index:0;
-  background:url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1600&q=80') center/cover no-repeat;
+  width:100%;height:100%;object-fit:cover;
 }
 .hero-overlay{
   position:absolute;inset:0;z-index:1;
@@ -819,7 +819,9 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 
 <!-- HERO -->
 <section class="hero" data-page="inicio">
-  <div class="hero-img"></div>
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="hero.mp4" type="video/mp4">
+  </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1 class="hero-title">La Vida Merece<br>un Homenaje</h1>
