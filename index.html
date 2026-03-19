@@ -29,9 +29,14 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#374151;font-size:16px
   --border:#e5e7eb;
 }
 
+/* ── HEADER WRAPPER ── */
+#main-header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  transition:transform .4s cubic-bezier(0.22,1,0.36,1);
+}
+
 /* ── URGENCY BAR ── */
 .urgency-bar{
-  position:fixed;top:0;left:0;right:0;z-index:200;
   background:var(--gold);
   display:flex;align-items:center;justify-content:center;gap:12px;
   padding:11px 2rem;
@@ -46,7 +51,7 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#374151;font-size:16px
 
 /* ── NAV ── */
 nav{
-  position:fixed;top:42px;left:0;right:0;z-index:100;
+  position:relative;
   background:transparent;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 2.5rem;height:72px;
@@ -687,7 +692,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
   .urgency-text-short{display:inline;}
 
   /* Nav */
-  nav{top:28px;height:56px;padding:0 1rem;}
+  nav{height:56px;padding:0 1rem;}
   .nav-logo-icon{width:40px;height:40px;}
   .nav-logo-icon svg{width:24px;height:24px;}
   .nav-logo-name{font-size:18px;}
@@ -755,6 +760,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 </head>
 <body>
 
+<header id="main-header">
 <!-- URGENCY BAR -->
 <div class="urgency-bar">
   <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
@@ -799,6 +805,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
     <span></span><span></span><span></span>
   </button>
 </nav>
+</header>
 <!-- MOBILE MENU -->
 <div class="mobile-overlay" id="mobile-overlay" onclick="closeMobileMenu()"></div>
 <div class="mobile-menu" id="mobile-menu">
@@ -1572,9 +1579,9 @@ function sendWhatsApp(){
   if(mensaje)text+=`\n\nMensaje: ${mensaje}`;
   window.open(`https://wa.me/526142396073?text=${encodeURIComponent(text)}`,'_blank');
 }
-// ── NAV SCROLL + AUTO-HIDE ──
+// ── HEADER SCROLL + AUTO-HIDE ──
 const nav=document.getElementById('main-nav');
-nav.style.transition='background .3s, box-shadow .3s, transform .35s cubic-bezier(0.22,1,0.36,1)';
+const mainHeader=document.getElementById('main-header');
 let lastScrollY=0;
 let currentPage='inicio';
 window.addEventListener('scroll',()=>{
@@ -1582,10 +1589,14 @@ window.addEventListener('scroll',()=>{
   if(currentPage==='inicio'){
     if(y>80){nav.classList.add('scrolled');}else{nav.classList.remove('scrolled');}
   }
-  if(y>140){
-    nav.style.transform=y>lastScrollY?'translateY(-100%)':'translateY(0)';
-  }else{
-    nav.style.transform='translateY(0)';
+  // No ocultar si el menú móvil está abierto
+  const menuOpen=document.getElementById('mobile-menu').classList.contains('open');
+  if(!menuOpen){
+    if(y>100){
+      mainHeader.style.transform=y>lastScrollY?'translateY(-100%)':'translateY(0)';
+    }else{
+      mainHeader.style.transform='translateY(0)';
+    }
   }
   lastScrollY=y;
 },{passive:true});
