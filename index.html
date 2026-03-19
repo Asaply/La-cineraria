@@ -620,6 +620,27 @@ footer{background:#0d1a30;padding:4rem 0 2rem;}
 .obit-modal-btn-outline svg{width:18px;height:18px;fill:currentColor;}
 .obit-modal-btn-outline:hover{border-color:var(--navy);color:var(--navy);}
 
+/* ── SCROLL ANIMATIONS ── */
+@keyframes animFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes animSlideBottom{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes animSlideLeft{from{opacity:0;transform:translateX(-56px)}to{opacity:1;transform:translateX(0)}}
+@keyframes animSlideRight{from{opacity:0;transform:translateX(56px)}to{opacity:1;transform:translateX(0)}}
+
+.anim{opacity:0;will-change:transform,opacity;}
+.anim-bottom{transform:translateY(40px);}
+.anim-left{transform:translateX(-56px);}
+.anim-right{transform:translateX(56px);}
+.anim.is-visible{
+  animation-fill-mode:both;
+  animation-timing-function:cubic-bezier(0.22,1,0.36,1);
+  animation-duration:0.75s;
+}
+.anim-fade.is-visible{animation-name:animFadeIn;}
+.anim-bottom.is-visible{animation-name:animSlideBottom;}
+.anim-left.is-visible{animation-name:animSlideLeft;}
+.anim-right.is-visible{animation-name:animSlideRight;}
+@media(prefers-reduced-motion:reduce){.anim{opacity:1;transform:none;}}
+
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){
   .services-grid{grid-template-columns:repeat(2,1fr);}
@@ -1452,11 +1473,67 @@ function sendWhatsApp(){
   if(mensaje)text+=`\n\nMensaje: ${mensaje}`;
   window.open(`https://wa.me/526142396073?text=${encodeURIComponent(text)}`,'_blank');
 }
+// ── NAV SCROLL + AUTO-HIDE ──
 const nav=document.getElementById('main-nav');
+nav.style.transition='background .3s, box-shadow .3s, transform .35s cubic-bezier(0.22,1,0.36,1)';
+let lastScrollY=0;
 window.addEventListener('scroll',()=>{
-  if(window.scrollY>80){nav.classList.add('scrolled');}
-  else{nav.classList.remove('scrolled');}
-});
+  const y=window.scrollY;
+  if(y>80){nav.classList.add('scrolled');}else{nav.classList.remove('scrolled');}
+  if(y>140){
+    nav.style.transform=y>lastScrollY?'translateY(-100%)':'translateY(0)';
+  }else{
+    nav.style.transform='translateY(0)';
+  }
+  lastScrollY=y;
+},{passive:true});
+
+// ── SCROLL ANIMATIONS ──
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('is-visible');obs.unobserve(e.target);}
+    });
+  },{threshold:0.13});
+
+  function reg(el,type,delay){
+    el.classList.add('anim','anim-'+type);
+    if(delay)el.style.animationDelay=delay+'s';
+    obs.observe(el);
+  }
+
+  // Hero content
+  const heroContent=document.querySelector('.hero-content');
+  if(heroContent)reg(heroContent,'bottom',0.2);
+
+  // Sección Nosotros
+  const aboutImg=document.querySelector('.about-img-wrap');
+  const aboutTxt=document.querySelector('.about-content');
+  if(aboutImg)reg(aboutImg,'left');
+  if(aboutTxt)reg(aboutTxt,'right',0.15);
+
+  // Section headers
+  document.querySelectorAll('.section-header').forEach(el=>reg(el,'bottom'));
+
+  // Service cards — stagger
+  document.querySelectorAll('.service-card').forEach((el,i)=>reg(el,'bottom',i*0.07));
+
+  // Location cards — stagger
+  document.querySelectorAll('.loc-card').forEach((el,i)=>reg(el,'bottom',i*0.1));
+
+  // Why cards — stagger
+  document.querySelectorAll('.why-card').forEach((el,i)=>reg(el,'bottom',i*0.08));
+
+  // Process steps — stagger
+  document.querySelectorAll('.process-step').forEach((el,i)=>reg(el,'bottom',i*0.1));
+
+  // FAQ items — stagger
+  document.querySelectorAll('.faq-item').forEach((el,i)=>reg(el,'bottom',i*0.06));
+
+  // Obit cards — stagger
+  document.querySelectorAll('.obit-card').forEach((el,i)=>reg(el,'bottom',i*0.08));
+})();
 
 // Filtros obituarios
 let activeFilter='todas';
