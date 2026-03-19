@@ -1483,9 +1483,12 @@ function sendWhatsApp(){
 const nav=document.getElementById('main-nav');
 nav.style.transition='background .3s, box-shadow .3s, transform .35s cubic-bezier(0.22,1,0.36,1)';
 let lastScrollY=0;
+let currentPage='inicio';
 window.addEventListener('scroll',()=>{
   const y=window.scrollY;
-  if(y>80){nav.classList.add('scrolled');}else{nav.classList.remove('scrolled');}
+  if(currentPage==='inicio'){
+    if(y>80){nav.classList.add('scrolled');}else{nav.classList.remove('scrolled');}
+  }
   if(y>140){
     nav.style.transform=y>lastScrollY?'translateY(-100%)':'translateY(0)';
   }else{
@@ -1547,6 +1550,8 @@ function showPage(name){
   document.querySelectorAll('.nav-links a').forEach(a=>{
     a.classList.toggle('nav-active', PAGE_MAP[a.getAttribute('href')]===name);
   });
+  // Trackear página activa para el scroll listener
+  currentPage=name;
   // Nav transparente solo en inicio (tiene hero de fondo), sólido en el resto
   if(name==='inicio'){
     nav.classList.toggle('scrolled', window.scrollY>80);
