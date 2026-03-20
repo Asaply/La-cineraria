@@ -1365,8 +1365,9 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 
         <p class="obit-modal-aviso">La familia y amigos le comunica el sensible fallecimiento de</p>
 
-        <!-- Vela -->
-        <div class="obit-modal-candle">
+        <!-- Foto o vela -->
+        <img id="modal-foto" src="" alt="" style="display:none;width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid rgba(201,151,28,0.5);margin:0 auto 1.5rem;box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+        <div class="obit-modal-candle" id="modal-candle">
           <svg viewBox="0 0 60 90" fill="none" style="width:56px;height:70px;">
             <ellipse cx="30" cy="82" rx="16" ry="5" fill="rgba(201,151,28,0.15)"/>
             <rect x="20" y="32" width="20" height="50" rx="10" fill="#c9971c" opacity=".25"/>
@@ -1592,7 +1593,7 @@ let obitData={};
 function buildObitCard(d){
   const sn=SUCURSAL_NOMBRES[d.sucursal]||d.sucursal;
   const mediaHtml=d.foto
-    ?`<div class="obit-candle"><img src="${d.foto}" class="obit-foto" alt="${d.nombre}" onerror="this.parentElement.innerHTML='${CANDLE_SVG.replace(/'/g,"\\'")}'" loading="lazy"></div>`
+    ?`<div class="obit-candle"><img src="${d.foto}" class="obit-foto" alt="" onerror="this.style.display='none'"></div>`
     :`<div class="obit-candle">${CANDLE_SVG}</div>`;
   return `<a class="obit-card" data-sucursal="${d.sucursal}" href="#">
     <div class="obit-card-inner">
@@ -1674,6 +1675,11 @@ function openObitModal(nombre){
   document.getElementById('modal-direccion').textContent=d.direccion;
   document.getElementById('modal-map').src=d.mapSrc;
   document.getElementById('modal-maps-btn').href=d.mapsUrl;
+  // foto vs vela
+  const fotoEl=document.getElementById('modal-foto');
+  const candleEl=document.getElementById('modal-candle');
+  if(d.foto){fotoEl.src=d.foto;fotoEl.style.display='block';candleEl.style.display='none';}
+  else{fotoEl.style.display='none';candleEl.style.display='block';}
   document.getElementById('modal-share-btn').onclick=()=>{
     const text=`Funerales La Cineraria — Homenaje de ${d.nombre}\nSucursal: ${d.sucursal}\n${d.sala}\n${d.fecha} · ${d.hora}\nSalida: ${d.salida} hacia ${d.destino}\nMás información: 614 411 11 04`;
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`,'_blank');
