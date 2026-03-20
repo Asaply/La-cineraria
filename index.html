@@ -1133,154 +1133,9 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 
       <!-- GRID DE OBITUARIOS -->
       <div class="obits-grid" id="obits-grid">
+        <p id="obits-loading" style="color:rgba(255,255,255,0.4);text-align:center;grid-column:1/-1;padding:2rem;">Cargando obituarios…</p>
 
-        <a class="obit-card" data-sucursal="platinum" href="#" onclick="shareObit(event,'María Estela Reyes Vda. de López','Platinum')">
-          <div class="obit-card-inner">
-            <div class="obit-candle">
-              <svg viewBox="0 0 60 80" fill="none">
-                <ellipse cx="30" cy="72" rx="14" ry="5" fill="rgba(201,151,28,0.18)"/>
-                <rect x="22" y="28" width="16" height="44" rx="8" fill="#c9971c" opacity=".22"/>
-                <rect x="24" y="30" width="12" height="40" rx="6" fill="#d4a82a" opacity=".35"/>
-                <rect x="27" y="32" width="6" height="36" rx="3" fill="#e8c060" opacity=".5"/>
-                <path d="M30 28 Q33 20 30 14 Q27 20 30 28Z" fill="#f5c842"/>
-                <path d="M30 26 Q32 21 30 17 Q28 21 30 26Z" fill="#fff" opacity=".7"/>
-                <rect x="29" y="8" width="2" height="6" rx="1" fill="#888"/>
-              </svg>
-            </div>
-            <div class="obit-info-block">
-              <div class="obit-nombre">María Estela<br>Reyes Vda. de López</div>
-              <div class="obit-meta">
-                <span class="obit-fecha">
-                  <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
-                  18/03/2026 · 10:00am
-                </span>
-                <span class="obit-suc">
-                  <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
-                  Capillas Platinum
-                </span>
-              </div>
-              <div class="obit-destino">Salida: 10:30am · Cementerio Municipal</div>
-            </div>
-          </div>
-          <div class="obit-actions-row">
-            <span class="obit-ver">Ver Detalles</span>
-            <span class="obit-share-btn">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Compartir
-            </span>
-          </div>
-        </a>
 
-        <a class="obit-card" data-sucursal="norte" href="#" onclick="shareObit(event,'José Armando Quiñones Baca','Norte')">
-          <div class="obit-card-inner">
-            <div class="obit-candle">
-              <svg viewBox="0 0 60 80" fill="none">
-                <ellipse cx="30" cy="72" rx="14" ry="5" fill="rgba(201,151,28,0.18)"/>
-                <rect x="22" y="28" width="16" height="44" rx="8" fill="#c9971c" opacity=".22"/>
-                <rect x="24" y="30" width="12" height="40" rx="6" fill="#d4a82a" opacity=".35"/>
-                <rect x="27" y="32" width="6" height="36" rx="3" fill="#e8c060" opacity=".5"/>
-                <path d="M30 28 Q33 20 30 14 Q27 20 30 28Z" fill="#f5c842"/>
-                <path d="M30 26 Q32 21 30 17 Q28 21 30 26Z" fill="#fff" opacity=".7"/>
-                <rect x="29" y="8" width="2" height="6" rx="1" fill="#888"/>
-              </svg>
-            </div>
-            <div class="obit-info-block">
-              <div class="obit-nombre">José Armando<br>Quiñones Baca</div>
-              <div class="obit-meta">
-                <span class="obit-fecha">
-                  <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
-                  18/03/2026 · 6:00pm
-                </span>
-                <span class="obit-suc">
-                  <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
-                  Sucursal Norte
-                </span>
-              </div>
-              <div class="obit-destino">Salida: 12:30pm · Crematorio</div>
-            </div>
-          </div>
-          <div class="obit-actions-row">
-            <span class="obit-ver">Ver Detalles</span>
-            <span class="obit-share-btn">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Compartir
-            </span>
-          </div>
-        </a>
-
-        <a class="obit-card" data-sucursal="inalambrica" href="#" onclick="shareObit(event,'Rosa Elena Domínguez Valles','Inalámbrica')">
-          <div class="obit-card-inner">
-            <div class="obit-candle">
-              <svg viewBox="0 0 60 80" fill="none">
-                <ellipse cx="30" cy="72" rx="14" ry="5" fill="rgba(201,151,28,0.18)"/>
-                <rect x="22" y="28" width="16" height="44" rx="8" fill="#c9971c" opacity=".22"/>
-                <rect x="24" y="30" width="12" height="40" rx="6" fill="#d4a82a" opacity=".35"/>
-                <rect x="27" y="32" width="6" height="36" rx="3" fill="#e8c060" opacity=".5"/>
-                <path d="M30 28 Q33 20 30 14 Q27 20 30 28Z" fill="#f5c842"/>
-                <path d="M30 26 Q32 21 30 17 Q28 21 30 26Z" fill="#fff" opacity=".7"/>
-                <rect x="29" y="8" width="2" height="6" rx="1" fill="#888"/>
-              </svg>
-            </div>
-            <div class="obit-info-block">
-              <div class="obit-nombre">Rosa Elena<br>Domínguez Valles</div>
-              <div class="obit-meta">
-                <span class="obit-fecha">
-                  <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
-                  17/03/2026 · 8:00am
-                </span>
-                <span class="obit-suc">
-                  <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
-                  Sucursal Inalámbrica
-                </span>
-              </div>
-              <div class="obit-destino">Salida: 9:00am · Panteón del Tepeyac</div>
-            </div>
-          </div>
-          <div class="obit-actions-row">
-            <span class="obit-ver">Ver Detalles</span>
-            <span class="obit-share-btn">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Compartir
-            </span>
-          </div>
-        </a>
-
-        <a class="obit-card" data-sucursal="sur" href="#" onclick="shareObit(event,'Carlos Humberto Flores Mendoza','Sur')">
-          <div class="obit-card-inner">
-            <div class="obit-candle">
-              <svg viewBox="0 0 60 80" fill="none">
-                <ellipse cx="30" cy="72" rx="14" ry="5" fill="rgba(201,151,28,0.18)"/>
-                <rect x="22" y="28" width="16" height="44" rx="8" fill="#c9971c" opacity=".22"/>
-                <rect x="24" y="30" width="12" height="40" rx="6" fill="#d4a82a" opacity=".35"/>
-                <rect x="27" y="32" width="6" height="36" rx="3" fill="#e8c060" opacity=".5"/>
-                <path d="M30 28 Q33 20 30 14 Q27 20 30 28Z" fill="#f5c842"/>
-                <path d="M30 26 Q32 21 30 17 Q28 21 30 26Z" fill="#fff" opacity=".7"/>
-                <rect x="29" y="8" width="2" height="6" rx="1" fill="#888"/>
-              </svg>
-            </div>
-            <div class="obit-info-block">
-              <div class="obit-nombre">Carlos Humberto<br>Flores Mendoza</div>
-              <div class="obit-meta">
-                <span class="obit-fecha">
-                  <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
-                  18/03/2026 · 3:00pm
-                </span>
-                <span class="obit-suc">
-                  <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
-                  Sucursal Sur
-                </span>
-              </div>
-              <div class="obit-destino">Salida: 4:00pm · Panteón Jardín</div>
-            </div>
-          </div>
-          <div class="obit-actions-row">
-            <span class="obit-ver">Ver Detalles</span>
-            <span class="obit-share-btn">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Compartir
-            </span>
-          </div>
-        </a>
 
         <div class="obit-no-results" id="obit-no-results" style="display:none;">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
@@ -1627,7 +1482,6 @@ if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
   document.querySelectorAll('.why-card').forEach((el,i)=>regAnim(el,'bottom',i*0.08));
   document.querySelectorAll('.process-step').forEach((el,i)=>regAnim(el,'bottom',i*0.1));
   document.querySelectorAll('.faq-item').forEach((el,i)=>regAnim(el,'bottom',i*0.06));
-  document.querySelectorAll('.obit-card').forEach((el,i)=>regAnim(el,'bottom',i*0.08));
 }
 
 // ── MULTI-PAGE ──
@@ -1718,57 +1572,86 @@ function filterObits(){
   document.getElementById('obit-no-results').style.display=visible===0?'flex':'none';
 }
 
-// Datos de cada obituario
-const obitData={
-  'María Estela Reyes Vda. de López':{
-    nombre:'María Estela Reyes Vda. de López',
-    fecha:'18 de marzo de 2026',
-    hora:'10:00 horas',
-    sala:'Capillas Platinum · Sala 2',
-    sucursal:'Capillas Platinum',
-    direccion:'Av. Juárez #4300, Col. Arquitectos (antes Zona Dorada), Chihuahua, Chih.',
-    destino:'Cementerio Municipal',
-    salida:'10:30am',
-    mapSrc:'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.4!2d-106.085!3d28.635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM4JzA2LjAiTiAxMDbCsDA1JzA2LjAiVw!5e0!3m2!1ses!2smx!4v1',
-    mapsUrl:'https://maps.google.com/?q=Av+Juarez+4300+Chihuahua'
-  },
-  'José Armando Quiñones Baca':{
-    nombre:'José Armando Quiñones Baca',
-    fecha:'18 de marzo de 2026',
-    hora:'18:00 horas',
-    sala:'Sucursal Norte · Sala 1',
-    sucursal:'Sucursal Norte',
-    direccion:'Av. Tecnológico #7713, Fracc. Lourdes, Chihuahua, Chih.',
-    destino:'Crematorio',
-    salida:'12:30pm del 19 mar',
-    mapSrc:'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.4!2d-106.045!3d28.705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDQyJzE4LjAiTiAxMDbCsDAyJzQyLjAiVw!5e0!3m2!1ses!2smx!4v1',
-    mapsUrl:'https://maps.google.com/?q=Av+Tecnologico+7713+Chihuahua'
-  },
-  'Rosa Elena Domínguez Valles':{
-    nombre:'Rosa Elena Domínguez Valles',
-    fecha:'17 de marzo de 2026',
-    hora:'08:00 horas',
-    sala:'Sucursal Inalámbrica · Sala 1',
-    sucursal:'Sucursal Inalámbrica',
-    direccion:'C. Silvestre Terrazas #6606, Col. Inalámbrica, Chihuahua, Chih.',
-    destino:'Panteón del Tepeyac',
-    salida:'9:00am',
-    mapSrc:'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.4!2d-106.065!3d28.675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDQwJzMwLjAiTiAxMDbCsDAzJzU0LjAiVw!5e0!3m2!1ses!2smx!4v1',
-    mapsUrl:'https://maps.google.com/?q=Silvestre+Terrazas+6606+Chihuahua'
-  },
-  'Carlos Humberto Flores Mendoza':{
-    nombre:'Carlos Humberto Flores Mendoza',
-    fecha:'18 de marzo de 2026',
-    hora:'15:00 horas',
-    sala:'Sucursal Sur · Sala 1',
-    sucursal:'Sucursal Sur',
-    direccion:'Blvd. Juan Pablo II #7703, Col. Aeropuerto, Chihuahua, Chih.',
-    destino:'Panteón Jardín',
-    salida:'4:00pm',
-    mapSrc:'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.4!2d-106.045!3d28.625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM3JzMwLjAiTiAxMDbCsDAyJzQyLjAiVw!5e0!3m2!1ses!2smx!4v1',
-    mapsUrl:'https://maps.google.com/?q=Blvd+Juan+Pablo+II+7703+Chihuahua'
-  }
+// ── OBITUARIOS DINÁMICOS ──
+const SUCURSAL_NOMBRES={
+  platinum:'Capillas Platinum',norte:'Sucursal Norte',
+  inalambrica:'Sucursal Inalámbrica',sur:'Sucursal Sur'
 };
+const CANDLE_SVG=`<svg viewBox="0 0 60 80" fill="none"><ellipse cx="30" cy="72" rx="14" ry="5" fill="rgba(201,151,28,0.18)"/><rect x="22" y="28" width="16" height="44" rx="8" fill="#c9971c" opacity=".22"/><rect x="24" y="30" width="12" height="40" rx="6" fill="#d4a82a" opacity=".35"/><rect x="27" y="32" width="6" height="36" rx="3" fill="#e8c060" opacity=".5"/><path d="M30 28 Q33 20 30 14 Q27 20 30 28Z" fill="#f5c842"/><path d="M30 26 Q32 21 30 17 Q28 21 30 26Z" fill="#fff" opacity=".7"/><rect x="29" y="8" width="2" height="6" rx="1" fill="#888"/></svg>`;
+const CLOCK_SVG=`<svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>`;
+const PIN_SVG=`<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>`;
+const WA_SVG=`<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+
+let obitData={};
+
+function buildObitCard(d){
+  const sn=SUCURSAL_NOMBRES[d.sucursal]||d.sucursal;
+  const nombreEsc=d.nombre.replace(/'/g,'\\\'');
+  return `<a class="obit-card" data-sucursal="${d.sucursal}" href="#">
+    <div class="obit-card-inner">
+      <div class="obit-candle">${CANDLE_SVG}</div>
+      <div class="obit-info-block">
+        <div class="obit-nombre">${d.nombre}</div>
+        <div class="obit-meta">
+          <span class="obit-fecha">${CLOCK_SVG}${d.fecha_corta} · ${d.hora}</span>
+          <span class="obit-suc">${PIN_SVG}${sn}</span>
+        </div>
+        <div class="obit-destino">Salida: ${d.salida} · ${d.destino}</div>
+      </div>
+    </div>
+    <div class="obit-actions-row">
+      <span class="obit-ver">Ver Detalles</span>
+      <span class="obit-share-btn">${WA_SVG}Compartir</span>
+    </div>
+  </a>`;
+}
+
+async function loadObituarios(){
+  try{
+    const res=await fetch('obituarios.json?v='+Date.now());
+    const obits=await res.json();
+    obitData={};
+    obits.forEach(d=>{
+      const sn=SUCURSAL_NOMBRES[d.sucursal]||d.sucursal;
+      obitData[d.nombre]={
+        nombre:d.nombre,fecha:d.fecha,hora:d.hora,
+        sala:d.sala,sucursal:sn,direccion:d.direccion,
+        destino:d.destino,salida:d.salida,
+        mapSrc:`https://maps.google.com/maps?q=${encodeURIComponent(d.direccion)}&output=embed`,
+        mapsUrl:d.maps_url
+      };
+    });
+    const grid=document.getElementById('obits-grid');
+    const loading=document.getElementById('obits-loading');
+    if(loading)loading.remove();
+    // Elimina cards hardcodeadas que puedan quedar
+    grid.querySelectorAll('.obit-card').forEach(c=>c.remove());
+    // Inserta nuevas cards antes del aviso de sin resultados
+    const noRes=document.getElementById('obit-no-results');
+    obits.forEach((d,i)=>{
+      const tmp=document.createElement('div');
+      tmp.innerHTML=buildObitCard(d);
+      const card=tmp.firstElementChild;
+      grid.insertBefore(card,noRes);
+      card.addEventListener('click',function(e){
+        if(e.target.closest('.obit-share-btn')){
+          e.preventDefault();
+          const dat=obitData[d.nombre];
+          const txt=dat?`Funerales La Cineraria — Homenaje de ${dat.nombre}\nSucursal: ${dat.sucursal}\n${dat.sala}\n${dat.fecha} · ${dat.hora}\nMás información: 614 411 11 04`:`Funerales La Cineraria — Homenaje de ${d.nombre}\nMás información: 614 411 11 04`;
+          window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`,'_blank');
+          return;
+        }
+        e.preventDefault();
+        openObitModal(d.nombre);
+      });
+      regAnim(card,'bottom',i*0.08);
+    });
+  }catch(err){
+    const loading=document.getElementById('obits-loading');
+    if(loading)loading.textContent='No hay obituarios disponibles en este momento.';
+  }
+}
+loadObituarios();
 
 function openObitModal(nombre){
   const d=obitData[nombre];
@@ -1806,15 +1689,6 @@ function shareObit(e,nombre,sucursal){
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`,'_blank');
 }
 
-// Click en card → abrir modal solo si NO es el botón compartir
-document.querySelectorAll('.obit-card').forEach(card=>{
-  card.addEventListener('click',function(e){
-    if(e.target.closest('.obit-share-btn'))return;
-    e.preventDefault();
-    const nombre=card.querySelector('.obit-nombre').textContent.replace(/\n/g,' ').replace(/\s+/g,' ').trim();
-    openObitModal(nombre);
-  });
-});
 // ── MOBILE MENU ──
 function toggleMobileMenu(){
   const ham=document.getElementById('nav-hamburger');

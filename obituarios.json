@@ -1,0 +1,50 @@
+[
+  {
+    "nombre": "María Estela Reyes Vda. de López",
+    "fecha_corta": "18/03/2026",
+    "fecha": "18 de marzo de 2026",
+    "hora": "10:00am",
+    "salida": "10:30am",
+    "destino": "Cementerio Municipal",
+    "sucursal": "platinum",
+    "sala": "Capillas Platinum · Sala 2",
+    "direccion": "Av. Juárez #4300, Col. Arquitectos (antes Zona Dorada), Chihuahua, Chih.",
+    "maps_url": "https://maps.google.com/?q=Av+Juarez+4300+Chihuahua+Chih"
+  },
+  {
+    "nombre": "José Armando Quiñones Baca",
+    "fecha_corta": "18/03/2026",
+    "fecha": "18 de marzo de 2026",
+    "hora": "6:00pm",
+    "salida": "12:30pm del 19 mar",
+    "destino": "Crematorio",
+    "sucursal": "norte",
+    "sala": "Sucursal Norte · Sala 1",
+    "direccion": "Av. Tecnológico #7713, Fracc. Lourdes, Chihuahua, Chih.",
+    "maps_url": "https://maps.google.com/?q=Av+Tecnologico+7713+Chihuahua+Chih"
+  },
+  {
+    "nombre": "Rosa Elena Domínguez Valles",
+    "fecha_corta": "17/03/2026",
+    "fecha": "17 de marzo de 2026",
+    "hora": "8:00am",
+    "salida": "9:00am",
+    "destino": "Panteón del Tepeyac",
+    "sucursal": "inalambrica",
+    "sala": "Sucursal Inalámbrica · Sala 1",
+    "direccion": "C. Silvestre Terrazas #6606, Col. Inalámbrica, Chihuahua, Chih.",
+    "maps_url": "https://maps.google.com/?q=Silvestre+Terrazas+6606+Chihuahua+Chih"
+  },
+  {
+    "nombre": "Carlos Humberto Flores Mendoza",
+    "fecha_corta": "18/03/2026",
+    "fecha": "18 de marzo de 2026",
+    "hora": "3:00pm",
+    "salida": "4:00pm",
+    "destino": "Panteón Jardín",
+    "sucursal": "sur",
+    "sala": "Sucursal Sur · Sala 1",
+    "direccion": "Blvd. Juan Pablo II #7703, Col. Aeropuerto, Chihuahua, Chih.",
+    "maps_url": "https://maps.google.com/?q=Blvd+Juan+Pablo+II+7703+Chihuahua+Chih"
+  }
+]
