@@ -373,6 +373,11 @@ nav.scrolled .nav-social svg{fill:var(--navy);}
 .obit-candle{
   width:60px;height:80px;margin-bottom:1.25rem;flex-shrink:0;
 }
+.obit-foto{
+  width:80px;height:80px;border-radius:50%;object-fit:cover;
+  border:3px solid rgba(201,151,28,0.5);
+  box-shadow:0 2px 10px rgba(0,0,0,0.3);
+}
 .obit-nombre{
   font-family:'Georgia',serif;font-size:18px;
   color:white;line-height:1.35;margin-bottom:1.1rem;font-weight:400;
@@ -1586,10 +1591,12 @@ let obitData={};
 
 function buildObitCard(d){
   const sn=SUCURSAL_NOMBRES[d.sucursal]||d.sucursal;
-  const nombreEsc=d.nombre.replace(/'/g,'\\\'');
+  const mediaHtml=d.foto
+    ?`<div class="obit-candle"><img src="${d.foto}" class="obit-foto" alt="${d.nombre}" onerror="this.parentElement.innerHTML='${CANDLE_SVG.replace(/'/g,"\\'")}'" loading="lazy"></div>`
+    :`<div class="obit-candle">${CANDLE_SVG}</div>`;
   return `<a class="obit-card" data-sucursal="${d.sucursal}" href="#">
     <div class="obit-card-inner">
-      <div class="obit-candle">${CANDLE_SVG}</div>
+      ${mediaHtml}
       <div class="obit-info-block">
         <div class="obit-nombre">${d.nombre}</div>
         <div class="obit-meta">

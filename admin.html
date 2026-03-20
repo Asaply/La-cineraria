@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Obituarios · La Cineraria Admin</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f0f0f0;color:#222}
+:root{--navy:#0B1F3A;--gold:#c9971c;--gold-light:#f0d48a}
+
+/* LOGIN */
+#login-screen{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:var(--navy);
+}
+.login-box{
+  background:#fff;border-radius:16px;padding:2.5rem 2rem;
+  width:100%;max-width:380px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.3);
+}
+.login-box img{width:100px;margin-bottom:1.25rem;}
+.login-box h2{font-size:20px;color:var(--navy);margin-bottom:.25rem;}
+.login-box p{font-size:13px;color:#888;margin-bottom:1.5rem;}
+.login-box input{
+  width:100%;padding:12px 14px;border:1.5px solid #ddd;border-radius:8px;
+  font-size:15px;margin-bottom:.75rem;outline:none;
+  transition:border-color .2s;
+}
+.login-box input:focus{border-color:var(--gold);}
+.btn-primary{
+  width:100%;padding:13px;background:var(--navy);color:#fff;
+  border:none;border-radius:8px;font-size:15px;font-weight:600;
+  cursor:pointer;transition:background .2s;
+}
+.btn-primary:hover{background:#162d52;}
+.login-error{color:#c00;font-size:13px;margin-top:.5rem;display:none;}
+
+/* LAYOUT */
+#app{display:none;min-height:100vh;}
+.topbar{
+  background:var(--navy);padding:.9rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+.topbar-left{display:flex;align-items:center;gap:.75rem;}
+.topbar img{height:36px;}
+.topbar h1{color:var(--gold);font-size:17px;font-weight:700;}
+.topbar span{color:rgba(255,255,255,.5);font-size:13px;}
+.btn-logout{
+  background:rgba(255,255,255,.1);color:#fff;border:none;
+  padding:7px 14px;border-radius:6px;font-size:13px;cursor:pointer;
+}
+.btn-logout:hover{background:rgba(255,255,255,.18);}
+
+.container{max-width:960px;margin:0 auto;padding:1.5rem;}
+
+/* BOTÓN AGREGAR */
+.add-btn{
+  display:flex;align-items:center;gap:.5rem;
+  background:var(--gold);color:#fff;border:none;
+  padding:12px 22px;border-radius:10px;font-size:15px;font-weight:700;
+  cursor:pointer;margin-bottom:1.5rem;transition:background .2s;
+}
+.add-btn:hover{background:#a87d14;}
+.add-btn svg{width:20px;height:20px;fill:#fff;}
+
+/* LISTA DE OBITUARIOS */
+.obit-list{display:flex;flex-direction:column;gap:.75rem;}
+.obit-item{
+  background:#fff;border-radius:12px;
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem 1.25rem;
+  box-shadow:0 2px 6px rgba(0,0,0,.07);
+  border:2px solid transparent;
+  transition:border-color .2s;
+}
+.obit-item:hover{border-color:rgba(201,151,28,.3);}
+.obit-item-photo{
+  width:54px;height:54px;border-radius:50%;
+  object-fit:cover;flex-shrink:0;
+  background:#eee;border:2px solid #ddd;
+}
+.obit-item-photo.no-photo{
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(201,151,28,.12);border:2px solid rgba(201,151,28,.25);
+}
+.obit-item-photo.no-photo svg{width:26px;height:26px;fill:rgba(201,151,28,.7);}
+.obit-item-info{flex:1;min-width:0;}
+.obit-item-nombre{font-size:16px;font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.obit-item-meta{font-size:13px;color:#777;margin-top:3px;}
+.obit-item-suc{
+  display:inline-block;font-size:11px;font-weight:700;
+  padding:2px 8px;border-radius:20px;margin-right:6px;margin-top:4px;
+  background:rgba(11,31,58,.1);color:var(--navy);
+}
+.obit-item-actions{display:flex;gap:.5rem;flex-shrink:0;}
+.btn-edit{
+  background:var(--navy);color:#fff;border:none;
+  padding:8px 16px;border-radius:7px;font-size:13px;font-weight:600;
+  cursor:pointer;transition:background .2s;
+}
+.btn-edit:hover{background:#162d52;}
+.btn-delete{
+  background:#fff;color:#c00;border:2px solid #f5c6c6;
+  padding:8px 12px;border-radius:7px;font-size:13px;font-weight:600;
+  cursor:pointer;transition:all .2s;
+}
+.btn-delete:hover{background:#fff0f0;border-color:#c00;}
+
+/* ESTADO VACÍO */
+.empty-state{
+  text-align:center;padding:3rem 1rem;color:#aaa;
+}
+.empty-state svg{width:48px;height:48px;fill:#ddd;margin-bottom:1rem;}
+
+/* FORMULARIO */
+.form-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);
+  z-index:200;display:flex;align-items:center;justify-content:center;
+  padding:1rem;opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.form-overlay.open{opacity:1;pointer-events:all;}
+.form-box{
+  background:#fff;border-radius:16px;
+  width:100%;max-width:600px;
+  max-height:92vh;overflow-y:auto;
+  transform:translateY(20px);transition:transform .2s;
+}
+.form-overlay.open .form-box{transform:translateY(0);}
+
+.form-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 1.5rem;border-bottom:1px solid #eee;
+  position:sticky;top:0;background:#fff;z-index:1;
+}
+.form-title{font-size:17px;font-weight:700;color:var(--navy);}
+.btn-close{
+  background:none;border:1.5px solid #ddd;border-radius:6px;
+  padding:6px 10px;cursor:pointer;color:#666;font-size:14px;
+}
+.form-body{padding:1.5rem;}
+
+.form-group{margin-bottom:1.1rem;}
+.form-label{
+  display:block;font-size:13px;font-weight:700;color:#444;
+  margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em;
+}
+.form-label span{font-weight:400;color:#aaa;text-transform:none;letter-spacing:0;}
+.form-input{
+  width:100%;padding:11px 13px;border:1.5px solid #ddd;border-radius:8px;
+  font-size:15px;outline:none;transition:border-color .2s;color:#222;
+}
+.form-input:focus{border-color:var(--gold);}
+.form-select{
+  width:100%;padding:11px 13px;border:1.5px solid #ddd;border-radius:8px;
+  font-size:15px;outline:none;background:#fff;color:#222;cursor:pointer;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+
+/* FOTO */
+.foto-area{
+  border:2px dashed #ddd;border-radius:10px;padding:1.25rem;
+  text-align:center;cursor:pointer;transition:border-color .2s;
+  position:relative;
+}
+.foto-area:hover{border-color:var(--gold);}
+.foto-area input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.foto-preview{
+  width:80px;height:80px;border-radius:50%;
+  object-fit:cover;margin:0 auto .75rem;display:block;
+  border:3px solid var(--gold);
+}
+.foto-placeholder svg{width:40px;height:40px;fill:#ddd;margin-bottom:.5rem;}
+.foto-placeholder p{font-size:13px;color:#aaa;}
+.foto-url-input{
+  width:100%;padding:9px 12px;border:1.5px solid #e8e8e8;
+  border-radius:7px;font-size:13px;margin-top:.75rem;
+  outline:none;color:#555;
+}
+.foto-url-input:focus{border-color:var(--gold);}
+.btn-remove-foto{
+  background:#fff0f0;color:#c00;border:1px solid #f5c6c6;
+  padding:5px 12px;border-radius:6px;font-size:12px;
+  cursor:pointer;margin-top:.5rem;
+}
+
+.form-footer{
+  display:flex;gap:.75rem;padding:1rem 1.5rem 1.5rem;
+  border-top:1px solid #eee;position:sticky;bottom:0;background:#fff;
+}
+.btn-save{
+  flex:1;background:var(--navy);color:#fff;border:none;
+  padding:13px;border-radius:9px;font-size:15px;font-weight:700;
+  cursor:pointer;transition:background .2s;
+}
+.btn-save:hover{background:#162d52;}
+.btn-save:disabled{background:#aaa;cursor:default;}
+.btn-cancel{
+  background:#f5f5f5;color:#555;border:none;
+  padding:13px 20px;border-radius:9px;font-size:15px;
+  cursor:pointer;transition:background .2s;
+}
+.btn-cancel:hover{background:#ebebeb;}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;
+  background:var(--navy);color:#fff;padding:12px 20px;
+  border-radius:10px;font-size:14px;font-weight:600;
+  transform:translateY(80px);opacity:0;transition:all .3s;
+  box-shadow:0 4px 16px rgba(0,0,0,.25);
+}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.success{background:#1a7a3a;}
+.toast.error{background:#c00;}
+
+/* SAVING OVERLAY */
+.saving{
+  position:fixed;inset:0;background:rgba(255,255,255,.85);
+  z-index:500;display:none;align-items:center;justify-content:center;
+  flex-direction:column;gap:1rem;font-size:16px;color:var(--navy);font-weight:600;
+}
+.saving.show{display:flex;}
+.spinner{
+  width:36px;height:36px;border:4px solid #ddd;
+  border-top-color:var(--navy);border-radius:50%;
+  animation:spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:540px){
+  .form-row{grid-template-columns:1fr;}
+  .obit-item{flex-wrap:wrap;}
+  .obit-item-actions{width:100%;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <img src="logo.png" alt="La Cineraria" onerror="this.style.display='none'">
+    <h2>Panel de Obituarios</h2>
+    <p>Ingresa tu token de acceso para continuar</p>
+    <input type="password" id="token-input" placeholder="Token de acceso" autocomplete="off"
+      onkeydown="if(event.key==='Enter')login()">
+    <button class="btn-primary" onclick="login()">Entrar</button>
+    <p class="login-error" id="login-error">Token incorrecto. Inténtalo de nuevo.</p>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="topbar">
+    <div class="topbar-left">
+      <img src="logo.png" alt="" onerror="this.style.display='none'">
+      <div>
+        <h1>Obituarios</h1>
+        <span>La Cineraria · Panel de administración</span>
+      </div>
+    </div>
+    <button class="btn-logout" onclick="logout()">Salir</button>
+  </div>
+
+  <div class="container">
+    <button class="add-btn" onclick="openForm()">
+      <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      Agregar Obituario
+    </button>
+    <div class="obit-list" id="obit-list">
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        <p>Cargando obituarios…</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORMULARIO -->
+<div class="form-overlay" id="form-overlay" onclick="if(event.target===this)closeForm()">
+  <div class="form-box">
+    <div class="form-header">
+      <span class="form-title" id="form-title">Nuevo Obituario</span>
+      <button class="btn-close" onclick="closeForm()">✕ Cerrar</button>
+    </div>
+    <div class="form-body">
+
+      <!-- FOTO -->
+      <div class="form-group">
+        <label class="form-label">Foto <span>(opcional)</span></label>
+        <div class="foto-area" id="foto-area" onclick="document.getElementById('foto-file').click()">
+          <input type="file" id="foto-file" accept="image/*" onchange="handleFotoFile(event)">
+          <div id="foto-preview-wrap" style="display:none">
+            <img id="foto-preview-img" class="foto-preview" src="" alt="">
+            <button class="btn-remove-foto" onclick="removeFoto(event)">✕ Quitar foto</button>
+          </div>
+          <div class="foto-placeholder" id="foto-placeholder">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+            <p>Toca para subir foto</p>
+          </div>
+        </div>
+        <input class="foto-url-input" id="foto-url" placeholder="O pega la URL de una foto aquí"
+          oninput="handleFotoUrl(this.value)">
+      </div>
+
+      <!-- NOMBRE -->
+      <div class="form-group">
+        <label class="form-label">Nombre completo</label>
+        <input class="form-input" id="f-nombre" placeholder="Ej: María Estela Reyes Vda. de López">
+      </div>
+
+      <!-- FECHAS -->
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Fecha del servicio <span>(dd/mm/aaaa)</span></label>
+          <input class="form-input" id="f-fecha-corta" placeholder="20/03/2026"
+            oninput="autoFechaLarga(this.value)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Hora de inicio</label>
+          <input class="form-input" id="f-hora" placeholder="10:00am">
+        </div>
+      </div>
+
+      <!-- SALIDA Y DESTINO -->
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Hora de salida</label>
+          <input class="form-input" id="f-salida" placeholder="10:30am">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Destino final</label>
+          <input class="form-input" id="f-destino" placeholder="Cementerio Municipal">
+        </div>
+      </div>
+
+      <!-- SUCURSAL -->
+      <div class="form-group">
+        <label class="form-label">Sucursal</label>
+        <select class="form-select" id="f-sucursal" onchange="autoSala()">
+          <option value="platinum">Capillas Platinum</option>
+          <option value="norte">Sucursal Norte</option>
+          <option value="inalambrica">Sucursal Inalámbrica</option>
+          <option value="sur">Sucursal Sur</option>
+        </select>
+      </div>
+
+      <!-- SALA -->
+      <div class="form-group">
+        <label class="form-label">Sala <span>(opcional)</span></label>
+        <input class="form-input" id="f-sala" placeholder="Capillas Platinum · Sala 1">
+      </div>
+
+      <!-- DIRECCIÓN Y MAPA -->
+      <div class="form-group">
+        <label class="form-label">Dirección de la sucursal</label>
+        <input class="form-input" id="f-direccion" placeholder="Av. Juárez #4300, Col. Arquitectos, Chihuahua">
+      </div>
+
+      <!-- FECHA LARGA (auto-generada, oculta pero editable) -->
+      <div class="form-group">
+        <label class="form-label">Fecha larga <span>(para el detalle)</span></label>
+        <input class="form-input" id="f-fecha" placeholder="20 de marzo de 2026">
+      </div>
+
+    </div>
+    <div class="form-footer">
+      <button class="btn-cancel" onclick="closeForm()">Cancelar</button>
+      <button class="btn-save" id="btn-save" onclick="saveObit()">💾 Guardar y Publicar</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- SAVING -->
+<div class="saving" id="saving">
+  <div class="spinner"></div>
+  <span>Publicando cambios…</span>
+</div>
+
+<script>
+const REPO = 'Asaply/La-cineraria';
+const FILE = 'obituarios.json';
+const SUCURSAL_NOMBRES = {
+  platinum: 'Capillas Platinum',
+  norte: 'Sucursal Norte',
+  inalambrica: 'Sucursal Inalámbrica',
+  sur: 'Sucursal Sur'
+};
+const SUCURSAL_DIRS = {
+  platinum: 'Av. Juárez #4300, Col. Arquitectos (antes Zona Dorada), Chihuahua, Chih.',
+  norte: 'Av. Tecnológico #7713, Fracc. Lourdes, Chihuahua, Chih.',
+  inalambrica: 'C. Silvestre Terrazas #6606, Col. Inalámbrica, Chihuahua, Chih.',
+  sur: 'Blvd. Juan Pablo II #7703, Col. Aeropuerto, Chihuahua, Chih.'
+};
+const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+let token = '';
+let obits = [];
+let fileSha = '';
+let editIndex = -1;
+let fotoBase64 = '';
+let fotoFileName = '';
+
+// ── AUTH ──
+function login() {
+  const t = document.getElementById('token-input').value.trim();
+  if (!t) return;
+  token = t;
+  localStorage.setItem('cineraria_token', t);
+  document.getElementById('login-error').style.display = 'none';
+  loadObituarios();
+}
+function logout() {
+  token = '';
+  localStorage.removeItem('cineraria_token');
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('token-input').value = '';
+}
+
+// ── API ──
+async function apiGet(path) {
+  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+    headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }
+  });
+  return r.json();
+}
+async function apiPut(path, content, sha, message) {
+  const body = { message, content: btoa(unescape(encodeURIComponent(content))), sha };
+  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  return r.json();
+}
+async function apiUploadFile(path, base64content, sha) {
+  const body = {
+    message: 'Subir foto obituario',
+    content: base64content,
+    ...(sha ? {sha} : {})
+  };
+  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  return r.json();
+}
+
+// ── CARGAR ──
+async function loadObituarios() {
+  try {
+    const data = await apiGet(FILE);
+    if (data.message === 'Bad credentials') {
+      document.getElementById('login-error').style.display = 'block';
+      token = '';
+      return;
+    }
+    fileSha = data.sha;
+    obits = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    renderList();
+  } catch(e) {
+    document.getElementById('login-error').style.display = 'block';
+  }
+}
+
+// ── RENDER LISTA ──
+function renderList() {
+  const list = document.getElementById('obit-list');
+  if (obits.length === 0) {
+    list.innerHTML = `<div class="empty-state">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+      <p>No hay obituarios. Agrega el primero.</p></div>`;
+    return;
+  }
+  list.innerHTML = obits.map((o, i) => {
+    const sn = SUCURSAL_NOMBRES[o.sucursal] || o.sucursal;
+    const fotoHtml = o.foto
+      ? `<img class="obit-item-photo" src="${o.foto}" alt="" onerror="this.src='';this.style.display='none'">`
+      : `<div class="obit-item-photo no-photo"><svg viewBox="0 0 24 24"><path d="M30 28 Q33 20 30 14 Q27 20 30 28Z" fill="#f5c842"/><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>`;
+    return `<div class="obit-item">
+      ${fotoHtml}
+      <div class="obit-item-info">
+        <div class="obit-item-nombre">${o.nombre}</div>
+        <div class="obit-item-meta">${o.fecha_corta} · ${o.hora}</div>
+        <span class="obit-item-suc">${sn}</span>
+        <span class="obit-item-suc" style="background:rgba(201,151,28,.12);color:#7a5a00;">${o.destino}</span>
+      </div>
+      <div class="obit-item-actions">
+        <button class="btn-edit" onclick="openForm(${i})">Editar</button>
+        <button class="btn-delete" onclick="deleteObit(${i})">Eliminar</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── FORM ──
+function openForm(index = -1) {
+  editIndex = index;
+  fotoBase64 = '';
+  fotoFileName = '';
+  document.getElementById('foto-file').value = '';
+  document.getElementById('foto-url').value = '';
+  document.getElementById('foto-preview-wrap').style.display = 'none';
+  document.getElementById('foto-placeholder').style.display = 'block';
+  document.getElementById('foto-area').style.pointerEvents = 'all';
+
+  if (index >= 0) {
+    const o = obits[index];
+    document.getElementById('form-title').textContent = 'Editar Obituario';
+    document.getElementById('f-nombre').value = o.nombre || '';
+    document.getElementById('f-fecha-corta').value = o.fecha_corta || '';
+    document.getElementById('f-fecha').value = o.fecha || '';
+    document.getElementById('f-hora').value = o.hora || '';
+    document.getElementById('f-salida').value = o.salida || '';
+    document.getElementById('f-destino').value = o.destino || '';
+    document.getElementById('f-sucursal').value = o.sucursal || 'platinum';
+    document.getElementById('f-sala').value = o.sala || '';
+    document.getElementById('f-direccion').value = o.direccion || '';
+    if (o.foto) {
+      document.getElementById('foto-url').value = o.foto;
+      showFotoPreview(o.foto);
+    }
+  } else {
+    document.getElementById('form-title').textContent = 'Nuevo Obituario';
+    document.getElementById('f-nombre').value = '';
+    document.getElementById('f-fecha-corta').value = '';
+    document.getElementById('f-fecha').value = '';
+    document.getElementById('f-hora').value = '';
+    document.getElementById('f-salida').value = '';
+    document.getElementById('f-destino').value = '';
+    document.getElementById('f-sucursal').value = 'platinum';
+    document.getElementById('f-sala').value = '';
+    document.getElementById('f-direccion').value = SUCURSAL_DIRS.platinum;
+  }
+  document.getElementById('form-overlay').classList.add('open');
+}
+function closeForm() {
+  document.getElementById('form-overlay').classList.remove('open');
+}
+function autoSala() {
+  const suc = document.getElementById('f-sucursal').value;
+  const sn = SUCURSAL_NOMBRES[suc] || '';
+  const sala = document.getElementById('f-sala').value;
+  if (!sala || Object.values(SUCURSAL_NOMBRES).some(n => sala.startsWith(n))) {
+    document.getElementById('f-sala').value = sn + ' · Sala 1';
+  }
+  document.getElementById('f-direccion').value = SUCURSAL_DIRS[suc] || '';
+}
+function autoFechaLarga(val) {
+  const parts = val.split('/');
+  if (parts.length === 3 && parts[0].length <= 2 && parts[1].length <= 2 && parts[2].length === 4) {
+    const d = parseInt(parts[0]);
+    const m = parseInt(parts[1]) - 1;
+    const a = parts[2];
+    if (!isNaN(d) && m >= 0 && m < 12) {
+      document.getElementById('f-fecha').value = `${d} de ${MESES[m]} de ${a}`;
+    }
+  }
+}
+
+// ── FOTO ──
+function handleFotoFile(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  fotoFileName = 'fotos/' + Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    fotoBase64 = ev.target.result.split(',')[1];
+    showFotoPreview(ev.target.result);
+    document.getElementById('foto-url').value = '';
+  };
+  reader.readAsDataURL(file);
+}
+function handleFotoUrl(url) {
+  if (url.startsWith('http')) {
+    fotoBase64 = '';
+    fotoFileName = '';
+    showFotoPreview(url);
+  }
+}
+function showFotoPreview(src) {
+  document.getElementById('foto-preview-img').src = src;
+  document.getElementById('foto-preview-wrap').style.display = 'block';
+  document.getElementById('foto-placeholder').style.display = 'none';
+  document.getElementById('foto-area').style.pointerEvents = 'none';
+}
+function removeFoto(e) {
+  e.stopPropagation();
+  fotoBase64 = '';
+  fotoFileName = '';
+  document.getElementById('foto-file').value = '';
+  document.getElementById('foto-url').value = '';
+  document.getElementById('foto-preview-wrap').style.display = 'none';
+  document.getElementById('foto-placeholder').style.display = 'block';
+  document.getElementById('foto-area').style.pointerEvents = 'all';
+}
+
+// ── GUARDAR ──
+async function saveObit() {
+  const nombre = document.getElementById('f-nombre').value.trim();
+  if (!nombre) { toast('Escribe el nombre de la persona', 'error'); return; }
+  const fechaCorta = document.getElementById('f-fecha-corta').value.trim();
+  if (!fechaCorta) { toast('Escribe la fecha del servicio', 'error'); return; }
+
+  document.getElementById('btn-save').disabled = true;
+  showSaving(true);
+
+  let fotoUrl = document.getElementById('foto-url').value.trim();
+
+  // Subir foto si se seleccionó archivo
+  if (fotoBase64 && fotoFileName) {
+    try {
+      const res = await apiUploadFile(fotoFileName, fotoBase64);
+      if (res.content && res.content.download_url) {
+        fotoUrl = res.content.download_url;
+      } else {
+        fotoUrl = `https://raw.githubusercontent.com/${REPO}/main/${fotoFileName}`;
+      }
+    } catch(e) {
+      toast('No se pudo subir la foto, intenta con URL', 'error');
+    }
+  }
+
+  const suc = document.getElementById('f-sucursal').value;
+  const entry = {
+    nombre,
+    fecha_corta: fechaCorta,
+    fecha: document.getElementById('f-fecha').value.trim() || fechaCorta,
+    hora: document.getElementById('f-hora').value.trim(),
+    salida: document.getElementById('f-salida').value.trim(),
+    destino: document.getElementById('f-destino').value.trim(),
+    sucursal: suc,
+    sala: document.getElementById('f-sala').value.trim() || (SUCURSAL_NOMBRES[suc] + ' · Sala 1'),
+    direccion: document.getElementById('f-direccion').value.trim() || SUCURSAL_DIRS[suc],
+    maps_url: `https://maps.google.com/?q=${encodeURIComponent(document.getElementById('f-direccion').value.trim() || SUCURSAL_DIRS[suc])}`,
+    ...(fotoUrl ? { foto: fotoUrl } : {})
+  };
+
+  if (editIndex >= 0) {
+    obits[editIndex] = entry;
+  } else {
+    obits.unshift(entry);
+  }
+
+  try {
+    const result = await apiPut(FILE, JSON.stringify(obits, null, 2), fileSha,
+      editIndex >= 0 ? `Actualizar obituario: ${nombre}` : `Agregar obituario: ${nombre}`);
+    if (result.content) {
+      fileSha = result.content.sha;
+      toast('Publicado. El sitio se actualiza en ~2 minutos', 'success');
+      renderList();
+      closeForm();
+    } else {
+      obits.splice(editIndex >= 0 ? editIndex : 0, editIndex >= 0 ? 1 : 1);
+      toast('Error al guardar. Verifica el token.', 'error');
+    }
+  } catch(e) {
+    toast('Error de conexión', 'error');
+  }
+
+  showSaving(false);
+  document.getElementById('btn-save').disabled = false;
+}
+
+// ── ELIMINAR ──
+async function deleteObit(index) {
+  if (!confirm(`¿Eliminar el obituario de "${obits[index].nombre}"?`)) return;
+  const removed = obits.splice(index, 1)[0];
+  showSaving(true);
+  try {
+    const result = await apiPut(FILE, JSON.stringify(obits, null, 2), fileSha,
+      `Eliminar obituario: ${removed.nombre}`);
+    if (result.content) {
+      fileSha = result.content.sha;
+      toast('Eliminado correctamente', 'success');
+      renderList();
+    } else {
+      obits.splice(index, 0, removed);
+      toast('Error al eliminar. Verifica el token.', 'error');
+    }
+  } catch(e) {
+    obits.splice(index, 0, removed);
+    toast('Error de conexión', 'error');
+  }
+  showSaving(false);
+}
+
+// ── UI HELPERS ──
+function toast(msg, type = '') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast ' + type;
+  setTimeout(() => el.classList.add('show'), 10);
+  setTimeout(() => el.classList.remove('show'), 3500);
+}
+function showSaving(show) {
+  document.getElementById('saving').classList.toggle('show', show);
+}
+
+// ── INIT ──
+const saved = localStorage.getItem('cineraria_token');
+if (saved) { token = saved; loadObituarios(); }
+</script>
+</body>
+</html>
