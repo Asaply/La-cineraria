@@ -1615,7 +1615,7 @@ function buildObitCard(d){
 
 async function loadObituarios(){
   try{
-    const res=await fetch('obituarios.json?v='+Date.now());
+    const res=await fetch('https://api.github.com/repos/Asaply/La-cineraria/contents/obituarios.json',{headers:{'Accept':'application/vnd.github.v3.raw','Cache-Control':'no-cache'}});
     const obits=await res.json();
     obitData={};
     obits.forEach(d=>{
