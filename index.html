@@ -1627,6 +1627,7 @@ async function loadObituarios(){
         nombre:d.nombre,fecha:d.fecha,hora:d.hora,
         sala:d.sala,sucursal:sn,direccion:d.direccion,
         destino:d.destino,salida:d.salida,
+        foto:d.foto||'',
         mapSrc:`https://maps.google.com/maps?q=${encodeURIComponent(d.direccion)}&output=embed`,
         mapsUrl:d.maps_url
       };
