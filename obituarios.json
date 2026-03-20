@@ -1,18 +1,5 @@
 [
   {
-    "nombre": "Eduardo Martinez",
-    "fecha_corta": "18/03/2026",
-    "fecha": "18 de marzo de 2026",
-    "hora": "10:00am",
-    "salida": "10:30am",
-    "destino": "Cementerio Municipal",
-    "sucursal": "platinum",
-    "sala": "Capillas Platinum · Sala 2",
-    "direccion": "Av. Juárez #4300, Col. Arquitectos (antes Zona Dorada), Chihuahua, Chih.",
-    "maps_url": "https://maps.google.com/?q=Av.%20Ju%C3%A1rez%20%234300%2C%20Col.%20Arquitectos%20(antes%20Zona%20Dorada)%2C%20Chihuahua%2C%20Chih.",
-    "foto": "https://raw.githubusercontent.com/Asaply/La-cineraria/main/fotos/1774019474321_Foto_el_20-03-26_a_las_9.10_a.m..jpeg"
-  },
-  {
     "nombre": "Leonardo Cardenas",
     "fecha_corta": "18/03/2026",
     "fecha": "18 de marzo de 2026",
