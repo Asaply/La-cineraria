@@ -824,7 +824,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 
 <!-- HERO -->
 <section class="hero" data-page="inicio">
-  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto">
+  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="metadata">
     <source src="hero.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
@@ -1719,17 +1719,34 @@ function closeMobileMenu(){
 (function(){
   const v=document.getElementById('heroVideo');
   if(!v)return;
+  v.muted=true;
+  v.defaultMuted=true;
   function tryPlay(){
+    v.muted=true;
     const p=v.play();
     if(p!==undefined){p.catch(()=>{});}
   }
-  if(v.readyState>=2){tryPlay();}
-  else{v.addEventListener('canplay',tryPlay,{once:true});}
-  // Fallback: intentar al primer toque del usuario
-  document.addEventListener('touchstart',function onTouch(){
-    tryPlay();
-    document.removeEventListener('touchstart',onTouch);
-  },{once:true,passive:true});
+  // Intentar inmediatamente
+  tryPlay();
+  // Al poder reproducir
+  v.addEventListener('canplay',tryPlay,{once:true});
+  // Cuando el video entre en pantalla (IntersectionObserver)
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries,obs){
+      if(entries[0].isIntersecting){tryPlay();obs.disconnect();}
+    },{threshold:0.1}).observe(v);
+  }
+  // Al primer toque / click (fallback iOS Low Power Mode)
+  ['touchstart','click'].forEach(function(evt){
+    document.addEventListener(evt,function h(){
+      tryPlay();
+      document.removeEventListener(evt,h);
+    },{once:true,passive:true});
+  });
+  // Si quedó pausado, reintentar al cambiar visibilidad de la pestaña
+  document.addEventListener('visibilitychange',function(){
+    if(!document.hidden&&v.paused)tryPlay();
+  });
 })();
 </script>
 </body>
