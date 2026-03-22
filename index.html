@@ -824,8 +824,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 
 <!-- HERO -->
 <section class="hero" data-page="inicio">
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="hero-mobile.mp4" media="(max-width:768px)" type="video/mp4">
+  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto">
     <source src="hero.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
@@ -1715,6 +1714,23 @@ function closeMobileMenu(){
   document.getElementById('mobile-overlay').classList.remove('open');
   document.body.style.overflow='';
 }
+
+// ── HERO VIDEO AUTOPLAY ──
+(function(){
+  const v=document.getElementById('heroVideo');
+  if(!v)return;
+  function tryPlay(){
+    const p=v.play();
+    if(p!==undefined){p.catch(()=>{});}
+  }
+  if(v.readyState>=2){tryPlay();}
+  else{v.addEventListener('canplay',tryPlay,{once:true});}
+  // Fallback: intentar al primer toque del usuario
+  document.addEventListener('touchstart',function onTouch(){
+    tryPlay();
+    document.removeEventListener('touchstart',onTouch);
+  },{once:true,passive:true});
+})();
 </script>
 </body>
 </html>
