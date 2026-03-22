@@ -237,6 +237,16 @@ nav.scrolled .nav-social svg{fill:var(--navy);}
 .loc-img{height:160px;background:var(--navy);display:flex;align-items:center;justify-content:center;}
 .loc-card.featured .loc-img{background:linear-gradient(135deg,var(--gold),var(--navy));}
 .loc-img svg{width:56px;height:56px;fill:rgba(255,255,255,0.22);}
+/* ── LOC CAROUSEL ── */
+.loc-carousel{position:relative;height:200px;overflow:hidden;background:#000;}
+.loc-carousel-track{display:flex;height:100%;transition:transform .5s ease;}
+.loc-carousel-track img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;}
+.loc-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.45);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;z-index:2;}
+.loc-carousel-btn.prev{left:6px;}
+.loc-carousel-btn.next{right:6px;}
+.loc-carousel-dots{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);display:flex;gap:5px;}
+.loc-carousel-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.5);cursor:pointer;}
+.loc-carousel-dots span.active{background:#fff;}
 .loc-body{padding:1.5rem;}
 .loc-chips{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap;align-items:center;}
 .loc-chip{font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.05em;}
@@ -944,7 +954,21 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
     <div class="locations-grid">
 
       <div class="loc-card">
-        <div class="loc-img"><svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg></div>
+        <div class="loc-carousel" id="car-inalambrica">
+          <div class="loc-carousel-track" id="car-inalambrica-track">
+            <img src="fotos/inalambrica-exterior.png" alt="Exterior">
+            <img src="fotos/inalambrica-capilla-1.jpeg" alt="Capilla">
+            <img src="fotos/inalambrica-cafeteria.jpeg" alt="Cafetería">
+            <img src="fotos/inalambrica-capilla-2.jpeg" alt="Capilla general">
+            <img src="fotos/inalambrica-altar.jpeg" alt="Altar">
+            <img src="fotos/inalambrica-sala.jpeg" alt="Sala de estancia">
+          </div>
+          <button class="loc-carousel-btn prev" onclick="carMove('inalambrica',-1)">&#8249;</button>
+          <button class="loc-carousel-btn next" onclick="carMove('inalambrica',1)">&#8250;</button>
+          <div class="loc-carousel-dots" id="car-inalambrica-dots">
+            <span class="active"></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
         <div class="loc-body">
           <div class="loc-chips">
             <span class="loc-chip chip-navy">Matriz</span>
@@ -1714,6 +1738,37 @@ function closeMobileMenu(){
   document.getElementById('mobile-overlay').classList.remove('open');
   document.body.style.overflow='';
 }
+
+// ── LOC CAROUSEL ──
+const carState={};
+function carInit(id,total){
+  carState[id]={idx:0,total,timer:null};
+  carAutoplay(id);
+}
+function carGo(id,idx){
+  const s=carState[id];
+  s.idx=(idx+s.total)%s.total;
+  document.getElementById('car-'+id+'-track').style.transform='translateX(-'+s.idx*100+'%)';
+  document.querySelectorAll('#car-'+id+'-dots span').forEach((d,i)=>d.classList.toggle('active',i===s.idx));
+}
+function carMove(id,dir){
+  clearTimeout(carState[id].timer);
+  carGo(id,carState[id].idx+dir);
+  carAutoplay(id);
+}
+function carAutoplay(id){
+  carState[id].timer=setTimeout(()=>{carGo(id,carState[id].idx+1);carAutoplay(id);},3500);
+}
+// Dots click
+document.querySelectorAll('.loc-carousel-dots span').forEach((dot,i)=>{
+  dot.addEventListener('click',()=>{
+    const id=dot.closest('.loc-carousel').id.replace('car-','');
+    clearTimeout(carState[id].timer);
+    carGo(id,i);
+    carAutoplay(id);
+  });
+});
+carInit('inalambrica',6);
 
 // ── HERO VIDEO AUTOPLAY ──
 (function(){
