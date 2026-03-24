@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -81,10 +82,17 @@ nav.scrolled{
 }
 .nav-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0;}
 .nav-logo-img{
-  height:86px;width:auto;display:block;
+  height:106px;width:auto;display:block;
   filter:drop-shadow(0 1px 4px rgba(0,0,0,0.45));
   transition:opacity .2s;
 }
+.nav-brand-title{
+  font-family:'Edwardian Script ITC','Great Vibes',cursive;
+  font-size:22px;color:rgba(255,255,255,0.95);
+  text-shadow:0 1px 6px rgba(0,0,0,0.5);
+  line-height:1.2;white-space:nowrap;letter-spacing:0.02em;
+}
+nav.scrolled .nav-brand-title{color:var(--navy);}
 .nav-logo-img:hover{opacity:.88;}
 .nav-links{display:flex;gap:2rem;}
 .nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,0.92);text-decoration:none;transition:color .2s;}
@@ -720,7 +728,8 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 
   /* Nav */
   nav{height:64px;padding:0 1rem;justify-content:center;}
-  .nav-logo-img{height:52px;}
+  .nav-logo-img{height:60px;}
+  .nav-brand-title{font-size:15px;}
   .nav-hamburger{position:absolute;right:1rem;}
   .nav-links{display:none!important;}
   .nav-social{display:none;}
@@ -807,14 +816,15 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 <!-- URGENCY BAR -->
 <div class="urgency-bar">
   <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-  <a href="tel:6144111104" class="urgency-text-full">Líneas de atención inmediata: 614 411 11 04 &nbsp;/&nbsp; 614 433 03 67 &nbsp;/&nbsp; 614 239 60 73</a>
-  <a href="tel:6144111104" class="urgency-text-short">Atención 24/7 · 614 411 11 04</a>
+  <span class="urgency-text-full"><a href="tel:6144150883" style="color:inherit;text-decoration:none;font-weight:700;">614 415 08 83</a> Servicios de Necesidad Inmediata &nbsp;·&nbsp; <a href="tel:6144104991" style="color:inherit;text-decoration:none;font-weight:700;">614 410 49 91</a> Servicios a Previsión</span>
+  <a href="tel:6144150883" class="urgency-text-short">Inmediata: 614 415 08 83</a>
 </div>
 
 <!-- NAV -->
 <nav id="main-nav">
   <a href="#" class="nav-logo">
     <img src="logo.png" alt="Funerales La Cineraria" class="nav-logo-img">
+    <span class="nav-brand-title">Funerales La Cineraria</span>
   </a>
   <div class="nav-links">
     <a href="#servicios">Servicios</a>
@@ -883,9 +893,9 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
       </div>
       <div class="about-content">
         <div class="section-tag">Sobre nosotros</div>
-        <h2>Sobre La Cineraria</h2>
+        <h2>Sobre Funerales La Cineraria</h2>
         <div class="about-divider"></div>
-        <p>En La Cineraria entendemos que perder a un ser querido es uno de los momentos más difíciles de la vida. Desde <strong>julio de 2015</strong>, hemos tenido el privilegio de acompañar a familias chihuahuenses brindando servicios funerarios con <strong>dignidad, respeto y compasión</strong>.</p>
+        <p>En Funerales La Cineraria entendemos que perder a un ser querido es uno de los momentos más difíciles de la vida. Desde <strong>julio de 2015</strong>, hemos tenido el privilegio de acompañar a familias chihuahuenses brindando servicios funerarios con <strong>dignidad, respeto y empatía</strong>.</p>
         <p>Reencuentro La Cineraria ha consolidado una identidad fundamentada en la calidez humana. Nos distinguimos por nuestra presencia estratégica en cuatro puntos de la ciudad y nuestro compromiso con la comunidad mediante atención disponible las <strong>24 horas, los 365 días del año</strong>.</p>
         <p>Nuestra prioridad es ofrecer soluciones integrales que se ajusten a cada necesidad, asegurando siempre un trato humano, ético y de la más alta calidad — <strong>sin distinción de creencia o nivel socioeconómico</strong>.</p>
         <div class="about-btns">
@@ -910,7 +920,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
       <div class="service-card">
         <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg></div>
         <div class="service-name">Cremación directa sin velación</div>
-        <p class="service-desc">Proceso de cremación digno y profesional. Opciones de urnas en madera, mármol y biovida para el resguardo de cenizas.</p>
+        <p class="service-desc">Proceso de cremación digno y profesional que consta de un servicio funerario en el cual se omite cualquier rito previo, como el velorio, la embalsamación o ceremonias de cuerpo presente de su ser amado.</p>
       </div>
       <div class="service-card">
         <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
@@ -920,22 +930,22 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
       <div class="service-card">
         <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div>
         <div class="service-name">Servicio de inhumación</div>
-        <p class="service-desc">Coordinación integral de velación, ceremonia religiosa o laica, y sepultura en cementerio, cripta o mausoleo.</p>
+        <p class="service-desc">Coordinación integral de velación en cualquiera de nuestras ubicaciones con posterior traslado al servicio o ceremonia religiosa o laica, para finalizar en cementerio de su elección.</p>
       </div>
       <div class="service-card">
         <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-5h2v5h6v-8h3L12 3zm0 12.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>
         <div class="service-name">Velación en domicilio</div>
-        <p class="service-desc">Servicio personalizado para familias que prefieren realizar la velación en la comodidad de su hogar, con todo el apoyo necesario.</p>
+        <p class="service-desc">Servicio personalizado para familias que prefieren realizar la TRADICIONAL velación en su domicilio con todo el apoyo necesario.</p>
       </div>
       <div class="service-card">
         <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>
         <div class="service-name">Traslados nacionales e internacionales</div>
-        <p class="service-desc">Traslados terrestres y aéreos a cualquier punto de la República. Repatriaciones al extranjero cumpliendo normativas sanitarias y consulares.</p>
+        <p class="service-desc">Traslados terrestres y aéreos a cualquier territorio, cumpliendo normativas sanitarias y consulares.</p>
       </div>
       <div class="service-card">
         <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg></div>
         <div class="service-name">Servicios a previsión</div>
-        <p class="service-desc">Planificación anticipada 100% transferible y sin vigencia. Congele costos hoy, seleccione cada detalle y proteja a su familia del futuro.</p>
+        <p class="service-desc">Planificación anticipada 100% transferible y sin vigencia. Congele PRECIO hoy, seleccione cada detalle y proteja a su familia del futuro INEVITABLE. Asesoramos según sus necesidades.</p>
       </div>
       <div class="service-card">
         <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg></div>
@@ -945,12 +955,12 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
       <div class="service-card">
         <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.34C18 2.54 15.96.5 13.46.5c-1.28 0-2.44.5-3.3 1.32L9 3l-1.16-1.18C6.94 1 5.78.5 4.5.5 2 .5 0 2.54 0 5.04c0 2.96 2.6 5.37 6.54 9.05L9 16.35l2.46-2.26C15.4 10.41 18 8 18 5.04c0 .46-.11.9-.18 1.34H20z"/></svg></div>
         <div class="service-name">Venta de nichos y urnas</div>
-        <p class="service-desc">Nichos para resguardo de cenizas en madera y mármol. Urnas de madera, mármol y biovida. Asesoramos según sus necesidades.</p>
+        <p class="service-desc">Nichos para resguardo de cenizas en madera y mármol. Así como la venta de urnas de madera, mármol y biovida en todas nuestras ubicaciones.</p>
       </div>
       <div class="service-card">
         <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg></div>
         <div class="service-name">Asesoría en trámites legales</div>
-        <p class="service-desc">Apoyo completo con actas de defunción, certificados y gestiones legales. Le acompañamos en cada paso de este proceso difícil.</p>
+        <p class="service-desc">Apoyo completo con asesorías profesionales para trámites y gestiones legales. Le acompañamos en cada paso de este proceso difícil.</p>
       </div>
     </div>
     <div class="services-cta">
@@ -1085,7 +1095,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
             <span class="loc-amenity">Carrozas modernas</span><span class="loc-amenity">Estacionamiento</span>
             <span class="loc-amenity">Cafetería</span><span class="loc-amenity">Clima</span>
           </div>
-          <a href="https://maps.google.com/?q=Av+Tecnologico+7713+Chihuahua" target="_blank" class="loc-btn"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>Cómo llegar</a>
+          <a href="https://maps.google.com/?q=Avenida+Tecnologico+7713+Fracc+Lourdes+Chihuahua+Chih+Mexico" target="_blank" class="loc-btn"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>Cómo llegar</a>
         </div>
       </div>
 
@@ -1098,7 +1108,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Nuestra diferencia</div>
-      <h2 class="section-title">¿Por Qué Elegir La Cineraria?</h2>
+      <h2 class="section-title">¿Por Qué Elegir a Funerales La Cineraria?</h2>
       <p class="section-sub">Más de 10 años de experiencia al servicio de familias chihuahuenses con compromiso, respeto y profesionalismo.</p>
       <div class="section-divider"></div>
     </div>
@@ -1106,7 +1116,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
       <div class="why-card">
         <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.81 6.01-4.5 7.5L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95z"/></svg></div>
         <div class="why-name">Experiencia Comprobada</div>
-        <p class="why-desc">Desde julio de 2015 sirviendo a familias chihuahuenses con la dignidad y el respeto que merecen en sus momentos más difíciles.</p>
+        <p class="why-desc">Desde julio de 2015 sirviendo a familias chihuahuenses con la dignidad y el respeto que merecen en los momentos más difíciles.</p>
       </div>
       <div class="why-card">
         <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
@@ -1121,7 +1131,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
       <div class="why-card">
         <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
         <div class="why-name">4 Ubicaciones Estratégicas</div>
-        <p class="why-desc">Matriz, Platinum, Norte y Sur. Instalaciones dignas y cómodas en cuatro puntos de Chihuahua para su comodidad y accesibilidad.</p>
+        <p class="why-desc">Matriz, Norte y Sur distribuidas estratégicamente en la ciudad. Además, contamos con nuestras <strong style="color:var(--gold);">Capillas Exclusivas "PLATINUM"</strong> — instalaciones de lujo en el centro de la ciudad para quienes buscan lo mejor en cada detalle.</p>
       </div>
       <div class="why-card">
         <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg></div>
@@ -1221,7 +1231,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
       <!-- AVISO OPERATIVO -->
       <div class="obit-notice">
         <div class="obit-dot"></div>
-        <p>Los obituarios se actualizan diariamente. Para reportar un servicio activo comuníquese con <strong>Alejandra Pérez</strong> (Dpto. Publicidad y Ventas) al <strong>614 132 81 41</strong>. Cada aviso permanece visible <strong>3 días</strong> después del servicio.</p>
+        <p>Los obituarios se actualizan diariamente. Para reportar un servicio activo comuníquese con el <strong>Depto. de Obituarios</strong> al <strong>614 410 49 91</strong>. Cada aviso permanece visible <strong>3 días</strong> después del servicio.</p>
       </div>
 
     </div>
@@ -1292,13 +1302,13 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
     <div class="contact-grid">
       <div>
         <div class="contact-channels">
+          <a href="tel:6144150883" class="contact-channel">
+            <div class="ch-icon phone"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+            <div><div class="ch-label">Línea principal</div><div class="ch-value">614 415 08 83</div></div>
+          </a>
           <a href="tel:6144111104" class="contact-channel">
             <div class="ch-icon phone"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
-            <div><div class="ch-label">Línea principal</div><div class="ch-value">614 411 11 04</div></div>
-          </a>
-          <a href="tel:6144330367" class="contact-channel">
-            <div class="ch-icon phone"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
-            <div><div class="ch-label">Línea alternativa</div><div class="ch-value">614 433 03 67</div></div>
+            <div><div class="ch-label">Línea alternativa</div><div class="ch-value">614 411 11 04</div></div>
           </a>
           <a href="https://wa.me/526142396073" class="contact-channel">
             <div class="ch-icon wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
@@ -1359,8 +1369,8 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
         </div>
         <p class="footer-desc">Reencuentro La Cineraria S.A. de C.V. — Desde julio de 2015 brindando servicios funerarios con dignidad, respeto y calidez humana a las familias chihuahuenses. Sin distinción de creencia ni nivel socioeconómico.</p>
         <div class="footer-phones">
-          <a href="tel:6144111104" class="footer-phone">614 411 11 04</a>
-          <a href="tel:6144330367" class="footer-phone">614 433 03 67</a>
+          <a href="tel:6144150883" class="footer-phone">Inmediata: 614 415 08 83</a>
+          <a href="tel:6144104991" class="footer-phone">Previsión: 614 410 49 91</a>
           <a href="https://wa.me/526142396073" class="footer-phone">WhatsApp: 614 239 60 73</a>
         </div>
       </div>
@@ -1377,10 +1387,10 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
       </div>
       <div class="footer-col">
         <h4>Ubicaciones</h4>
-        <a href="#">Matriz — Zarco</a>
-        <a href="#">Platinum — Av. Juárez</a>
-        <a href="#">Sur — Col. Aeropuerto</a>
-        <a href="#">Tecnológico — Av. Tecnológico</a>
+        <a href="tel:6144150883">Zarco · 614 415 08 83</a>
+        <a href="tel:6144105700">Capillas Exclusivas Platinum · 614 410 57 00</a>
+        <a href="tel:6144465114">Aeropuerto · 614 446 51 14</a>
+        <a href="tel:6144175151">Tecnológico · 614 417 51 51</a>
       </div>
       <div class="footer-col">
         <h4>Empresa</h4>
