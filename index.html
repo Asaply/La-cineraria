@@ -987,7 +987,22 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
       </div>
 
       <div class="loc-card featured">
-        <div class="loc-img" style="background:none;"><img src="fotos/platinum-exterior.jpg" alt="Capillas Exclusivas Platinum" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="loc-carousel" id="car-platinum">
+          <div class="loc-carousel-track" id="car-platinum-track">
+            <img src="fotos/platinum-exterior.jpg" alt="Exterior">
+            <img src="fotos/platinum-exterior2.jpg" alt="Fachada">
+            <img src="fotos/platinum-escalera.jpg" alt="Lobby y escalera">
+            <img src="fotos/platinum-pasillo.jpg" alt="Pasillo interior">
+            <img src="fotos/platinum-sala.jpg" alt="Sala de estancia">
+            <img src="fotos/platinum-capilla.jpg" alt="Capilla">
+            <img src="fotos/platinum-cafeteria.jpg" alt="Cafetería">
+          </div>
+          <button class="loc-carousel-btn prev" onclick="carMove('platinum',-1)">&#8249;</button>
+          <button class="loc-carousel-btn next" onclick="carMove('platinum',1)">&#8250;</button>
+          <div class="loc-carousel-dots" id="car-platinum-dots">
+            <span class="active"></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
         <div class="loc-body">
           <div class="loc-chips">
             <span class="loc-chip chip-gold">Platinum</span>
@@ -1785,6 +1800,7 @@ document.querySelectorAll('.loc-carousel-dots span').forEach((dot,i)=>{
 });
 carInit('inalambrica',6);
 carInit('aeropuerto',7);
+carInit('platinum',7);
 
 // ── HERO VIDEO AUTOPLAY ──
 (function(){
