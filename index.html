@@ -15,9 +15,9 @@ html{scroll-behavior:smooth;}
 body{font-family:'Inter',sans-serif;background:#fff;color:#374151;font-size:16px;line-height:1.6;}
 
 :root{
-  --navy:#6b1020;
-  --navy-dark:#4d0b17;
-  --navy-mid:#841328;
+  --navy:#4a0b16;
+  --navy-dark:#30070f;
+  --navy-mid:#5e0e1d;
   --gold:#c9971c;
   --gold-light:#d9aa2e;
   --gold-bg:#fdf3d7;
@@ -1805,6 +1805,11 @@ carInit('platinum',6);
 (function(){
   const v=document.getElementById('heroVideo');
   if(!v)return;
+  // Usar versión mobile si la pantalla es pequeña
+  if(window.innerWidth<=768){
+    v.querySelector('source').src='hero-mobile.mp4';
+    v.load();
+  }
   v.muted=true;
   v.defaultMuted=true;
   function tryPlay(){
