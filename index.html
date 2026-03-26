@@ -16,9 +16,9 @@ html{scroll-behavior:smooth;}
 body{font-family:'Inter',sans-serif;background:#fff;color:#374151;font-size:16px;line-height:1.6;}
 
 :root{
-  --navy:#4A0000;
-  --navy-dark:#2e0000;
-  --navy-mid:#620000;
+  --navy:#320009;
+  --navy-dark:#1a0004;
+  --navy-mid:#460010;
   --gold:#c9971c;
   --gold-light:#d9aa2e;
   --gold-bg:#fdf3d7;
@@ -73,24 +73,24 @@ nav{
   position:relative;
   background:transparent;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 2.5rem;height:90px;
+  padding:0 2.5rem;height:134px;
   transition:background .3s, box-shadow .3s;
 }
 nav.scrolled{
   background:rgba(255,255,255,0.97);
   box-shadow:0 2px 16px rgba(0,0,0,0.1);
 }
-.nav-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0;}
+.nav-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;gap:0;}
 .nav-logo-img{
-  height:106px;width:auto;display:block;
+  height:127px;width:auto;display:block;
   filter:drop-shadow(0 1px 4px rgba(0,0,0,0.45));
   transition:opacity .2s;
 }
 .nav-brand-title{
   font-family:'Edwardian Script ITC','Great Vibes',cursive;
-  font-size:22px;color:rgba(255,255,255,0.95);
+  font-size:20px;color:rgba(255,255,255,0.95);
   text-shadow:0 1px 6px rgba(0,0,0,0.5);
-  line-height:1.2;white-space:nowrap;letter-spacing:0.02em;
+  line-height:1.1;white-space:nowrap;letter-spacing:0.02em;
 }
 nav.scrolled .nav-brand-title{color:var(--navy);}
 .nav-logo-img:hover{opacity:.88;}
@@ -519,7 +519,7 @@ nav.scrolled .nav-social svg{fill:var(--navy);}
 footer{background:var(--navy);padding:4rem 0 2rem;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
 .footer-logo-wrap{margin-bottom:1.25rem;}
-.footer-logo-img{height:90px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.92;}
+.footer-logo-img{height:110px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.92;}
 .footer-desc{font-size:13px;color:rgba(255,255,255,0.42);line-height:1.75;margin-bottom:1.25rem;}
 .footer-phones{display:flex;flex-direction:column;gap:.35rem;}
 .footer-phone{font-size:14px;font-weight:600;color:white;text-decoration:none;}
@@ -728,7 +728,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 
   /* Nav */
   nav{height:64px;padding:0 1rem;justify-content:center;}
-  .nav-logo-img{height:60px;}
+  .nav-logo-img{height:72px;}
   .nav-brand-title{font-size:15px;}
   .nav-hamburger{position:absolute;right:1rem;}
   .nav-links{display:none!important;}
@@ -826,7 +826,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 <nav id="main-nav">
   <a href="#" class="nav-logo">
     <img src="logo.png" alt="Funerales La Cineraria" class="nav-logo-img">
-    <span class="nav-brand-title">Funerales La Cineraria</span>
+    <span class="nav-brand-title">Funerales Miranda</span>
   </a>
   <div class="nav-links">
     <a href="#servicios">Servicios</a>
