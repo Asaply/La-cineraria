@@ -172,7 +172,7 @@ nav.scrolled .nav-social svg{fill:var(--navy);}
 .section-alt{background:var(--gray);}
 /* offset for fixed urgency bar + nav */
 #nosotros,#servicios,#ubicaciones,#obituarios,#faq,#contacto{
-  scroll-margin-top:225px;
+  scroll-margin-top:240px;
 }
 .container{max-width:1160px;margin:0 auto;padding:0 2rem;}
 .section-header{text-align:center;margin-bottom:3rem;}
@@ -1593,7 +1593,7 @@ function _switchContent(name){
   });
   if(name!=='inicio'){
     const firstSection=document.querySelector('[data-page="'+name+'"]');
-    const hh=window.innerWidth<=768?'84px':'114px';
+    const hh=window.innerWidth<=768?'96px':'228px';
     if(firstSection)firstSection.style.paddingTop=hh;
   }
   currentPage=name;
