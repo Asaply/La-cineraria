@@ -1108,7 +1108,21 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
       </div>
 
       <div class="loc-card">
-        <div class="loc-img" style="background:none;"><img src="fotos/sucursal-tecnologico.png" alt="Sucursal Lourdes — Av. Tecnológico" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="loc-carousel" id="car-tecnologico">
+          <div class="loc-carousel-track" id="car-tecnologico-track">
+            <img src="fotos/tecnologico-sala.jpg" alt="Sala de estancia">
+            <img src="fotos/tecnologico-capilla-1.jpg" alt="Capilla">
+            <img src="fotos/tecnologico-capilla-2.jpg" alt="Capilla 2">
+            <img src="fotos/tecnologico-capilla-3.jpg" alt="Capilla 3">
+            <img src="fotos/tecnologico-cafeteria.jpg" alt="Cafetería">
+            <img src="fotos/tecnologico-ataudes.jpg" alt="Sala de ataúdes">
+          </div>
+          <button class="loc-carousel-btn prev" onclick="carMove('tecnologico',-1)">&#8249;</button>
+          <button class="loc-carousel-btn next" onclick="carMove('tecnologico',1)">&#8250;</button>
+          <div class="loc-carousel-dots" id="car-tecnologico-dots">
+            <span class="active"></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
         <div class="loc-body">
           <div class="loc-chips">
             <span class="loc-chip chip-navy">Norte</span>
