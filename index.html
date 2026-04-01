@@ -1733,7 +1733,7 @@ function buildObitCard(d){
       <div class="obit-info-block">
         <div class="obit-nombre">${d.nombre}</div>
         <div class="obit-meta">
-          <span class="obit-fecha">${CLOCK_SVG}${d.fecha_corta} · ${d.hora}</span>
+          <span class="obit-fecha">${CLOCK_SVG}${d.fecha_corta}</span>
           <span class="obit-suc">${PIN_SVG}${sn}</span>
         </div>
         <div class="obit-destino">Salida: ${d.salida} · ${d.destino}</div>
@@ -1756,7 +1756,7 @@ async function loadObituarios(){
     obits.forEach(d=>{
       const sn=SUCURSAL_NOMBRES[d.sucursal]||d.sucursal;
       obitData[d.nombre]={
-        nombre:d.nombre,fecha:d.fecha,hora:d.hora,
+        nombre:d.nombre,fecha:d.fecha,
         sala:d.sala,sucursal:sn,direccion:d.direccion,
         destino:d.destino,salida:d.salida,
         foto:d.foto||'',
@@ -1780,7 +1780,7 @@ async function loadObituarios(){
         if(e.target.closest('.obit-share-btn')){
           e.preventDefault();
           const dat=obitData[d.nombre];
-          const txt=dat?`Funerales La Cineraria — Homenaje de ${dat.nombre}\nSucursal: ${dat.sucursal}\n${dat.sala}\n${dat.fecha} · ${dat.hora}\nMás información: 614 411 11 04\nVer obituario en: https://asaply.github.io/La-cineraria/#obituarios`:`Funerales La Cineraria — Homenaje de ${d.nombre}\nMás información: 614 411 11 04\nVer obituario en: https://asaply.github.io/La-cineraria/#obituarios`;
+          const txt=dat?`Funerales La Cineraria — Homenaje de ${dat.nombre}\nSucursal: ${dat.sucursal}\n${dat.sala}\n${dat.fecha}\nMás información: 614 411 11 04\nVer obituario en: https://asaply.github.io/La-cineraria/#obituarios`:`Funerales La Cineraria — Homenaje de ${d.nombre}\nMás información: 614 411 11 04\nVer obituario en: https://asaply.github.io/La-cineraria/#obituarios`;
           window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`,'_blank');
           return;
         }
@@ -1803,7 +1803,7 @@ function openObitModal(nombre){
   document.getElementById('modal-nombre').textContent=d.nombre;
   document.getElementById('modal-fecha-text').textContent=`Ocurrido en Chihuahua el ${d.fecha}`;
   document.getElementById('modal-sala').textContent=d.sala;
-  document.getElementById('modal-datetime').textContent=`El ${d.fecha} a las ${d.hora}`;
+  document.getElementById('modal-datetime').textContent=`El ${d.fecha}`;
   document.getElementById('modal-sucursal-title').textContent=d.sucursal;
   document.getElementById('modal-direccion').textContent=d.direccion;
   document.getElementById('modal-map').src=d.mapSrc;
@@ -1814,7 +1814,7 @@ function openObitModal(nombre){
   if(d.foto){fotoEl.src=d.foto;fotoEl.style.display='block';candleEl.style.display='none';}
   else{fotoEl.style.display='none';candleEl.style.display='block';}
   document.getElementById('modal-share-btn').onclick=()=>{
-    const text=`Funerales La Cineraria — Homenaje de ${d.nombre}\nSucursal: ${d.sucursal}\n${d.sala}\n${d.fecha} · ${d.hora}\nSalida: ${d.salida} hacia ${d.destino}\nMás información: 614 411 11 04\nVer obituario en: https://asaply.github.io/La-cineraria/#obituarios`;
+    const text=`Funerales La Cineraria — Homenaje de ${d.nombre}\nSucursal: ${d.sucursal}\n${d.sala}\n${d.fecha}\nSalida: ${d.salida} hacia ${d.destino}\nMás información: 614 411 11 04\nVer obituario en: https://asaply.github.io/La-cineraria/#obituarios`;
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`,'_blank');
   };
   document.getElementById('obit-modal').classList.add('open');
@@ -1832,7 +1832,7 @@ function shareObit(e,nombre,sucursal){
   e.preventDefault();
   const d=obitData[nombre];
   const text=d
-    ?`Funerales La Cineraria — Homenaje de ${d.nombre}\nSucursal: ${d.sucursal}\n${d.sala}\n${d.fecha} · ${d.hora}\nMás información: 614 411 11 04\nVer obituario en: https://asaply.github.io/La-cineraria/#obituarios`
+    ?`Funerales La Cineraria — Homenaje de ${d.nombre}\nSucursal: ${d.sucursal}\n${d.sala}\n${d.fecha}\nMás información: 614 411 11 04\nVer obituario en: https://asaply.github.io/La-cineraria/#obituarios`
     :`Funerales La Cineraria — Homenaje de ${nombre}\nSucursal: ${sucursal}\nMás información: 614 411 11 04\nVer obituario en: https://asaply.github.io/La-cineraria/#obituarios`;
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`,'_blank');
 }
