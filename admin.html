@@ -311,16 +311,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
 
       <!-- FECHAS -->
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Fecha del servicio <span>(dd/mm/aaaa)</span></label>
-          <input class="form-input" id="f-fecha-corta" placeholder="20/03/2026"
-            oninput="autoFechaLarga(this.value)">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Hora de inicio</label>
-          <input class="form-input" id="f-hora" placeholder="10:00am">
-        </div>
+      <div class="form-group">
+        <label class="form-label">Fecha del servicio <span>(dd/mm/aaaa)</span></label>
+        <input class="form-input" id="f-fecha-corta" placeholder="20/03/2026"
+          oninput="autoFechaLarga(this.value)">
       </div>
 
       <!-- SALIDA Y DESTINO -->
@@ -489,7 +483,7 @@ function renderList() {
       ${fotoHtml}
       <div class="obit-item-info">
         <div class="obit-item-nombre">${o.nombre}</div>
-        <div class="obit-item-meta">${o.fecha_corta} · ${o.hora}</div>
+        <div class="obit-item-meta">${o.fecha_corta}</div>
         <span class="obit-item-suc">${sn}</span>
         <span class="obit-item-suc" style="background:rgba(201,151,28,.12);color:#7a5a00;">${o.destino}</span>
       </div>
@@ -518,7 +512,6 @@ function openForm(index = -1) {
     document.getElementById('f-nombre').value = o.nombre || '';
     document.getElementById('f-fecha-corta').value = o.fecha_corta || '';
     document.getElementById('f-fecha').value = o.fecha || '';
-    document.getElementById('f-hora').value = o.hora || '';
     document.getElementById('f-salida').value = o.salida || '';
     document.getElementById('f-destino').value = o.destino || '';
     document.getElementById('f-sucursal').value = o.sucursal || 'platinum';
@@ -533,7 +526,6 @@ function openForm(index = -1) {
     document.getElementById('f-nombre').value = '';
     document.getElementById('f-fecha-corta').value = '';
     document.getElementById('f-fecha').value = '';
-    document.getElementById('f-hora').value = '';
     document.getElementById('f-salida').value = '';
     document.getElementById('f-destino').value = '';
     document.getElementById('f-sucursal').value = 'platinum';
@@ -634,7 +626,6 @@ async function saveObit() {
     nombre,
     fecha_corta: fechaCorta,
     fecha: document.getElementById('f-fecha').value.trim() || fechaCorta,
-    hora: document.getElementById('f-hora').value.trim(),
     salida: document.getElementById('f-salida').value.trim(),
     destino: document.getElementById('f-destino').value.trim(),
     sucursal: suc,
