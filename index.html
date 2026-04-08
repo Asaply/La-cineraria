@@ -888,7 +888,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 
 <!-- HERO -->
 <section class="hero" data-page="inicio">
-  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="metadata">
+  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto">
     <source src="hero.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
@@ -1924,13 +1924,40 @@ carInit('tecnologico',7);
 (function(){
   const v=document.getElementById('heroVideo');
   if(!v)return;
+
+  // Usar video ligero en móvil (361KB vs 67MB)
+  const isMobile=window.innerWidth<=768||/Mobi|Android/i.test(navigator.userAgent);
+  if(isMobile){
+    v.src='hero-mobile.mp4';
+  }
+
   v.muted=true;
   v.defaultMuted=true;
+
   function tryPlay(){
     v.muted=true;
     const p=v.play();
-    if(p!==undefined){p.catch(()=>{});}
+    if(p!==undefined){p.catch(function(){});}
   }
+
+  // Recuperación de stalls (buffering / red lenta)
+  var stallTimer=null;
+  function onStall(){
+    clearTimeout(stallTimer);
+    stallTimer=setTimeout(function(){
+      if(v.paused||v.readyState<3){
+        var t=v.currentTime;
+        v.load();
+        v.currentTime=t;
+        tryPlay();
+      }
+    },2500);
+  }
+  v.addEventListener('waiting',onStall);
+  v.addEventListener('stalled',onStall);
+  v.addEventListener('playing',function(){clearTimeout(stallTimer);});
+  v.addEventListener('error',function(){setTimeout(tryPlay,1000);});
+
   // Intentar inmediatamente
   tryPlay();
   // Al poder reproducir
