@@ -329,16 +329,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         </div>
       </div>
 
-      <!-- SALIDA Y DESTINO -->
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Hora de salida</label>
-          <input class="form-input" id="f-salida" placeholder="10:30am">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Destino final</label>
-          <input class="form-input" id="f-destino" placeholder="Cementerio Municipal">
-        </div>
+      <!-- DESTINO -->
+      <div class="form-group">
+        <label class="form-label">Destino final</label>
+        <input class="form-input" id="f-destino" placeholder="Cementerio Municipal">
       </div>
 
       <!-- SUCURSAL -->
@@ -526,7 +520,6 @@ function openForm(index = -1) {
     document.getElementById('f-fecha').value = o.fecha || '';
     document.getElementById('f-fecha-ingreso').value = o.fecha_ingreso || '';
     document.getElementById('f-fecha-salida').value = o.fecha_salida || '';
-    document.getElementById('f-salida').value = o.salida || '';
     document.getElementById('f-destino').value = o.destino || '';
     document.getElementById('f-sucursal').value = o.sucursal || 'platinum';
     document.getElementById('f-sala').value = o.sala || '';
@@ -542,7 +535,6 @@ function openForm(index = -1) {
     document.getElementById('f-fecha').value = '';
     document.getElementById('f-fecha-ingreso').value = '';
     document.getElementById('f-fecha-salida').value = '';
-    document.getElementById('f-salida').value = '';
     document.getElementById('f-destino').value = '';
     document.getElementById('f-sucursal').value = 'platinum';
     document.getElementById('f-sala').value = '';
@@ -644,7 +636,6 @@ async function saveObit() {
     fecha: document.getElementById('f-fecha').value.trim() || fechaCorta,
     fecha_ingreso: document.getElementById('f-fecha-ingreso').value.trim(),
     fecha_salida: document.getElementById('f-fecha-salida').value.trim(),
-    salida: document.getElementById('f-salida').value.trim(),
     destino: document.getElementById('f-destino').value.trim(),
     sucursal: suc,
     sala: document.getElementById('f-sala').value.trim() || (SUCURSAL_NOMBRES[suc] + ' · Sala 1'),
