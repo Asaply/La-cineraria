@@ -836,9 +836,15 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
   .footer-bottom{flex-direction:column;align-items:center;text-align:center;}
   .footer-legal{justify-content:center;}
 
-  /* WA Float: espacio para barra de navegación iOS */
-  .wa-float{bottom:1.5rem;right:1rem;width:52px;height:52px;}
-  .wa-float svg{width:26px;height:26px;}
+  /* Botones flotantes en móvil: fila horizontal abajo */
+  .wa-float{bottom:1rem;right:0.5rem;width:44px;height:44px;}
+  .wa-float svg{width:22px;height:22px;}
+  .music-btn{bottom:1rem;right:3.75rem;width:44px;height:44px;}
+  .music-btn svg{width:18px;height:18px;}
+  .fb-float{bottom:1rem;right:7rem;width:44px;height:44px;}
+  .fb-float svg{width:20px;height:20px;}
+  .ig-float{bottom:1rem;right:10.25rem;width:44px;height:44px;}
+  .ig-float svg{width:20px;height:20px;}
 
   /* Obit modal */
   .obit-modal-body{grid-template-columns:1fr;}
@@ -898,9 +904,8 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
 
 <!-- HERO -->
 <section class="hero" data-page="inicio">
-  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto">
-    <source src="hero.mp4" type="video/mp4">
-  </video>
+  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
+  <script>(function(){var v=document.getElementById('heroVideo');v.src=(/Mobi|Android/i.test(navigator.userAgent)||window.innerWidth<=768)?'hero-mobile.mp4':'hero.mp4';v.load();})();</script>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1 class="hero-title">La Vida Merece<br>un Homenaje</h1>
@@ -1944,12 +1949,6 @@ carInit('tecnologico',7);
 (function(){
   const v=document.getElementById('heroVideo');
   if(!v)return;
-
-  // Usar video ligero en móvil (361KB vs 67MB)
-  const isMobile=window.innerWidth<=768||/Mobi|Android/i.test(navigator.userAgent);
-  if(isMobile){
-    v.src='hero-mobile.mp4';
-  }
 
   v.muted=true;
   v.defaultMuted=true;
