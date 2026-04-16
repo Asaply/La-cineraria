@@ -10,17 +10,5 @@
     "sala": "Sucursal Zarco · Sala 1",
     "direccion": "C. Silvestre Terrazas #6606, Col. Inalámbrica, Chihuahua, Chih.",
     "maps_url": "https://maps.google.com/?q=C.%20Silvestre%20Terrazas%20%236606%2C%20Col.%20Inal%C3%A1mbrica%2C%20Chihuahua%2C%20Chih."
-  },
-  {
-    "nombre": "Rosa Elena Domínguez Valles",
-    "fecha_corta": "17/03/2026",
-    "fecha": "17 de marzo de 2026",
-    "hora": "8:00am",
-    "salida": "9:00am",
-    "destino": "Panteón del Tepeyac",
-    "sucursal": "inalambrica",
-    "sala": "Sucursal Inalámbrica · Sala 1",
-    "direccion": "C. Silvestre Terrazas #6606, Col. Inalámbrica, Chihuahua, Chih.",
-    "maps_url": "https://maps.google.com/?q=Silvestre+Terrazas+6606+Chihuahua+Chih"
   }
 ]
