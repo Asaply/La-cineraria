@@ -1834,8 +1834,8 @@ function openObitModal(nombre){
   document.getElementById('modal-datetime').textContent=`El ${d.fecha}`;
   const ingEl=document.getElementById('modal-fecha-ingreso');
   const salEl=document.getElementById('modal-fecha-salida');
-  if(d.fecha_ingreso){ingEl.textContent=`Ingreso: ${d.fecha_ingreso}`;ingEl.style.display='';}else{ingEl.style.display='none';}
-  if(d.fecha_salida){salEl.textContent=`Salida: ${d.fecha_salida}`;salEl.style.display='';}else{salEl.style.display='none';}
+  if(d.fecha_ingreso){ingEl.textContent=`Hora de ingreso: ${d.fecha_ingreso}`;ingEl.style.display='';}else{ingEl.style.display='none';}
+  if(d.fecha_salida){salEl.textContent=`Hora de salida: ${d.fecha_salida}`;salEl.style.display='';}else{salEl.style.display='none';}
   document.getElementById('modal-sucursal-title').textContent=d.sucursal;
   document.getElementById('modal-direccion').textContent=d.direccion;
   document.getElementById('modal-map').src=d.mapSrc;
