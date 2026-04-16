@@ -317,6 +317,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
           oninput="autoFechaLarga(this.value)">
       </div>
 
+      <!-- FECHA INGRESO Y SALIDA -->
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Fecha de ingreso <span>(dd/mm/aaaa)</span></label>
+          <input class="form-input" id="f-fecha-ingreso" placeholder="16/04/2026">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Fecha de salida <span>(dd/mm/aaaa)</span></label>
+          <input class="form-input" id="f-fecha-salida" placeholder="18/04/2026">
+        </div>
+      </div>
+
       <!-- SALIDA Y DESTINO -->
       <div class="form-row">
         <div class="form-group">
@@ -512,6 +524,8 @@ function openForm(index = -1) {
     document.getElementById('f-nombre').value = o.nombre || '';
     document.getElementById('f-fecha-corta').value = o.fecha_corta || '';
     document.getElementById('f-fecha').value = o.fecha || '';
+    document.getElementById('f-fecha-ingreso').value = o.fecha_ingreso || '';
+    document.getElementById('f-fecha-salida').value = o.fecha_salida || '';
     document.getElementById('f-salida').value = o.salida || '';
     document.getElementById('f-destino').value = o.destino || '';
     document.getElementById('f-sucursal').value = o.sucursal || 'platinum';
@@ -526,6 +540,8 @@ function openForm(index = -1) {
     document.getElementById('f-nombre').value = '';
     document.getElementById('f-fecha-corta').value = '';
     document.getElementById('f-fecha').value = '';
+    document.getElementById('f-fecha-ingreso').value = '';
+    document.getElementById('f-fecha-salida').value = '';
     document.getElementById('f-salida').value = '';
     document.getElementById('f-destino').value = '';
     document.getElementById('f-sucursal').value = 'platinum';
@@ -626,6 +642,8 @@ async function saveObit() {
     nombre,
     fecha_corta: fechaCorta,
     fecha: document.getElementById('f-fecha').value.trim() || fechaCorta,
+    fecha_ingreso: document.getElementById('f-fecha-ingreso').value.trim(),
+    fecha_salida: document.getElementById('f-fecha-salida').value.trim(),
     salida: document.getElementById('f-salida').value.trim(),
     destino: document.getElementById('f-destino').value.trim(),
     sucursal: suc,
