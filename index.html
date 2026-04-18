@@ -1519,6 +1519,7 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
         <p class="obit-modal-dt" id="modal-datetime"></p>
         <p class="obit-modal-dt" id="modal-fecha-ingreso" style="display:none"></p>
         <p class="obit-modal-dt" id="modal-fecha-salida" style="display:none"></p>
+        <p class="obit-modal-dt" id="modal-servicio-religioso" style="display:none"></p>
       </div>
 
       <!-- COLUMNA DERECHA -->
@@ -1787,6 +1788,9 @@ async function loadObituarios(){
         nombre:d.nombre,fecha:d.fecha,
         sala:d.sala,sucursal:sn,direccion:d.direccion,
         destino:d.destino,salida:d.salida,
+        fecha_ingreso:d.fecha_ingreso||'',
+        fecha_salida:d.fecha_salida||'',
+        servicio_religioso:d.servicio_religioso||'',
         foto:d.foto||'',
         mapSrc:`https://maps.google.com/maps?q=${encodeURIComponent(d.direccion)}&output=embed`,
         mapsUrl:d.maps_url
@@ -1834,8 +1838,10 @@ function openObitModal(nombre){
   document.getElementById('modal-datetime').textContent=`El ${d.fecha}`;
   const ingEl=document.getElementById('modal-fecha-ingreso');
   const salEl=document.getElementById('modal-fecha-salida');
-  if(d.fecha_ingreso){ingEl.textContent=`Hora de ingreso: ${d.fecha_ingreso}`;ingEl.style.display='';}else{ingEl.style.display='none';}
+  if(d.fecha_ingreso){ingEl.textContent=`Fecha de inicio: ${d.fecha_ingreso}`;ingEl.style.display='';}else{ingEl.style.display='none';}
   if(d.fecha_salida){salEl.textContent=`Hora de salida: ${d.fecha_salida}`;salEl.style.display='';}else{salEl.style.display='none';}
+  const relEl=document.getElementById('modal-servicio-religioso');
+  if(d.servicio_religioso){relEl.textContent=`Servicio Religioso: ${d.servicio_religioso}`;relEl.style.display='';}else{relEl.style.display='none';}
   document.getElementById('modal-sucursal-title').textContent=d.sucursal;
   document.getElementById('modal-direccion').textContent=d.direccion;
   document.getElementById('modal-map').src=d.mapSrc;
