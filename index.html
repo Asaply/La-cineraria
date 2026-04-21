@@ -1762,10 +1762,11 @@ function buildObitCard(d){
       <div class="obit-info-block">
         <div class="obit-nombre">${d.nombre}</div>
         <div class="obit-meta">
-          <span class="obit-fecha">${CLOCK_SVG}${d.fecha_corta}</span>
+          <span class="obit-fecha">${CLOCK_SVG}${d.fecha||d.fecha_corta}</span>
           <span class="obit-suc">${PIN_SVG}${sn}</span>
         </div>
-        <div class="obit-destino">Salida: ${d.salida} · ${d.destino}</div>
+        ${(d.fecha_salida||d.salida)?`<div class="obit-destino">Salida: ${d.fecha_salida||d.salida} · ${d.destino}</div>`:`<div class="obit-destino">${d.destino}</div>`}
+        ${(d.servicio_religioso&&d.servicio_religioso!=='PENDIENTE')?`<div class="obit-destino" style="color:rgba(201,151,28,0.6);">Misa: ${d.servicio_religioso}</div>`:''}
       </div>
     </div>
     <div class="obit-actions-row">
