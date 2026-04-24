@@ -1,5 +1,20 @@
 [
   {
+    "nombre": "SRA MA JOSEFINA MORALES GUERRERO",
+    "fecha_corta": "PENDIENTE",
+    "fecha": "PENDIENTE",
+    "fecha_ingreso": "24 ABRIL 2026",
+    "fecha_fin": "25 ABRIL 2026",
+    "fecha_salida": "14:10 HRS",
+    "oculto": false,
+    "servicio_religioso": "SAGRADO CORAZON",
+    "destino": "CEMENTERIO MUNICIPAL 1",
+    "sucursal": "platinum",
+    "sala": "Capillas Platinum · Sala 1",
+    "direccion": "Av. Juárez #4300, Col. Arquitectos (antes Zona Dorada), Chihuahua, Chih.",
+    "maps_url": "https://maps.google.com/?q=Av.%20Ju%C3%A1rez%20%234300%2C%20Col.%20Arquitectos%20(antes%20Zona%20Dorada)%2C%20Chihuahua%2C%20Chih."
+  },
+  {
     "nombre": "SR JUAN DE DIOS CHACON BILLA",
     "fecha_corta": "SALIDA 24 ABRIL 2026",
     "fecha": "SALIDA 24 ABRIL 2026",
