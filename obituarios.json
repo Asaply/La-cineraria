@@ -1,5 +1,20 @@
 [
   {
+    "nombre": "SRA MA JOSEFINA MORALES GUERRERO",
+    "fecha_corta": "25 ABRIL 2026",
+    "fecha": "25 ABRIL 2026",
+    "fecha_ingreso": "24 ABRIL 2026",
+    "fecha_fin": "25 ABRIL 2026",
+    "fecha_salida": "14:00 HRS",
+    "oculto": false,
+    "servicio_religioso": "SANTA TERESITA",
+    "destino": "MUNICIPAL 4",
+    "sucursal": "norte",
+    "sala": "Sucursal Tecnológico · Sala 1",
+    "direccion": "Av. Tecnológico #7713, Fracc. Lourdes, Chihuahua, Chih.",
+    "maps_url": "https://maps.google.com/?q=Av.%20Tecnol%C3%B3gico%20%237713%2C%20Fracc.%20Lourdes%2C%20Chihuahua%2C%20Chih."
+  },
+  {
     "nombre": "SR JUAN DE DIOS CHACON BILLA",
     "fecha_corta": "SALIDA 24 ABRIL 2026",
     "fecha": "SALIDA 24 ABRIL 2026",
