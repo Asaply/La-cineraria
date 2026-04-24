@@ -1,5 +1,19 @@
 [
   {
+    "nombre": "SR JUAN DE DIOS CHACON BILLA",
+    "fecha_corta": "SALIDA 24 ABRIL 2026",
+    "fecha": "SALIDA 24 ABRIL 2026",
+    "fecha_ingreso": "",
+    "fecha_salida": "PENDIENTE",
+    "servicio_religioso": "PENDIENTE",
+    "destino": "PENDIENTE",
+    "sucursal": "platinum",
+    "sala": "Capillas Platinum · Sala 1",
+    "direccion": "Av. Juárez #4300, Col. Arquitectos (antes Zona Dorada), Chihuahua, Chih.",
+    "maps_url": "https://maps.google.com/?q=Av.%20Ju%C3%A1rez%20%234300%2C%20Col.%20Arquitectos%20(antes%20Zona%20Dorada)%2C%20Chihuahua%2C%20Chih.",
+    "foto": "https://raw.githubusercontent.com/Asaply/La-cineraria/main/fotos/1777041792448_2.png"
+  },
+  {
     "nombre": "SR GONZALO MARQUEZ LERMA",
     "fecha_corta": "SALIDA 22 ABRIL 2026",
     "fecha": "SALIDA 22 ABRIL 2026",
