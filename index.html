@@ -1510,7 +1510,6 @@ nav.scrolled .nav-hamburger span{background:var(--navy);}
         </div>
 
         <h2 class="obit-modal-nombre" id="modal-nombre"></h2>
-        <p class="obit-modal-fechatxt" id="modal-fecha-text"></p>
         <p class="obit-modal-oracion">Agradecemos una oración en su memoria.</p>
 
         <div class="obit-modal-divider"></div>
@@ -1790,6 +1789,7 @@ async function loadObituarios(){
         sala:d.sala,sucursal:sn,direccion:d.direccion,
         destino:d.destino,salida:d.salida,
         fecha_ingreso:d.fecha_ingreso||'',
+        fecha_fin:d.fecha_fin||'',
         fecha_salida:d.fecha_salida||'',
         servicio_religioso:d.servicio_religioso||'',
         foto:d.foto||'',
@@ -1797,6 +1797,7 @@ async function loadObituarios(){
         mapsUrl:d.maps_url
       };
     });
+    const visibleObits=obits.filter(d=>!d.oculto);
     const grid=document.getElementById('obits-grid');
     const loading=document.getElementById('obits-loading');
     if(loading)loading.remove();
@@ -1804,7 +1805,7 @@ async function loadObituarios(){
     grid.querySelectorAll('.obit-card').forEach(c=>c.remove());
     // Inserta nuevas cards antes del aviso de sin resultados
     const noRes=document.getElementById('obit-no-results');
-    obits.forEach((d,i)=>{
+    visibleObits.forEach((d,i)=>{
       const tmp=document.createElement('div');
       tmp.innerHTML=buildObitCard(d);
       const card=tmp.firstElementChild;
@@ -1834,12 +1835,12 @@ function openObitModal(nombre){
   if(!d)return;
   document.getElementById('modal-breadcrumb').textContent=d.nombre;
   document.getElementById('modal-nombre').textContent=d.nombre;
-  document.getElementById('modal-fecha-text').textContent=`Ocurrido en Chihuahua el ${d.fecha}`;
-  document.getElementById('modal-sala').textContent=d.sala;
-  document.getElementById('modal-datetime').textContent=`El ${d.fecha}`;
+  document.getElementById('modal-sala').textContent=d.sucursal;
+  const dtEl=document.getElementById('modal-datetime');
+  if(d.fecha_ingreso){dtEl.textContent=`Inicio de velación: ${d.fecha_ingreso}`;dtEl.style.display='';}else{dtEl.style.display='none';}
   const ingEl=document.getElementById('modal-fecha-ingreso');
   const salEl=document.getElementById('modal-fecha-salida');
-  if(d.fecha_ingreso){ingEl.textContent=`Fecha de inicio: ${d.fecha_ingreso}`;ingEl.style.display='';}else{ingEl.style.display='none';}
+  if(d.fecha_fin){ingEl.textContent=`Fin de velación: ${d.fecha_fin}`;ingEl.style.display='';}else{ingEl.style.display='none';}
   if(d.fecha_salida){salEl.textContent=`Hora de salida: ${d.fecha_salida}`;salEl.style.display='';}else{salEl.style.display='none';}
   const relEl=document.getElementById('modal-servicio-religioso');
   if(d.servicio_religioso){relEl.textContent=`Servicio Religioso: ${d.servicio_religioso}`;relEl.style.display='';}else{relEl.style.display='none';}

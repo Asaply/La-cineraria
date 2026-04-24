@@ -106,6 +106,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   cursor:pointer;transition:all .2s;
 }
 .btn-delete:hover{background:#fff0f0;border-color:#c00;}
+.btn-toggle-hide{
+  background:#fff;color:#888;border:2px solid #e0e0e0;
+  padding:8px 12px;border-radius:7px;font-size:13px;font-weight:600;
+  cursor:pointer;transition:all .2s;
+}
+.btn-toggle-hide:hover{background:#f5f5f5;border-color:#aaa;}
+.obit-item.oculto{opacity:.45;background:#f8f8f8;}
+.obit-item.oculto .obit-item-nombre{text-decoration:line-through;color:#999;}
+.badge-oculto{
+  display:inline-block;font-size:11px;font-weight:700;
+  padding:2px 8px;border-radius:20px;margin-right:6px;margin-top:4px;
+  background:#eee;color:#888;
+}
 
 /* ESTADO VACÍO */
 .empty-state{
@@ -317,16 +330,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
           oninput="autoFechaLarga(this.value)">
       </div>
 
-      <!-- FECHA INGRESO Y SALIDA -->
+      <!-- VELACIÓN -->
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label">Fecha de inicio</label>
-          <input class="form-input" id="f-fecha-ingreso" placeholder="10:00am">
+          <label class="form-label">Inicio de velación</label>
+          <input class="form-input" id="f-fecha-ingreso" placeholder="19 ABRIL 2026">
         </div>
         <div class="form-group">
-          <label class="form-label">Hora de salida</label>
-          <input class="form-input" id="f-fecha-salida" placeholder="2:00pm">
+          <label class="form-label">Fin de velación</label>
+          <input class="form-input" id="f-fecha-fin" placeholder="20 ABRIL 2026">
         </div>
+      </div>
+
+      <!-- HORA SALIDA -->
+      <div class="form-group">
+        <label class="form-label">Hora de salida</label>
+        <input class="form-input" id="f-fecha-salida" placeholder="2:00pm">
       </div>
 
       <!-- SERVICIO RELIGIOSO -->
@@ -491,15 +510,17 @@ function renderList() {
     const fotoHtml = o.foto
       ? `<img class="obit-item-photo" src="${o.foto}" alt="" onerror="this.src='';this.style.display='none'">`
       : `<div class="obit-item-photo no-photo"><svg viewBox="0 0 24 24"><path d="M30 28 Q33 20 30 14 Q27 20 30 28Z" fill="#f5c842"/><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>`;
-    return `<div class="obit-item">
+    return `<div class="obit-item${o.oculto?' oculto':''}">
       ${fotoHtml}
       <div class="obit-item-info">
         <div class="obit-item-nombre">${o.nombre}</div>
         <div class="obit-item-meta">${o.fecha_corta}</div>
         <span class="obit-item-suc">${sn}</span>
         <span class="obit-item-suc" style="background:rgba(201,151,28,.12);color:#7a5a00;">${o.destino}</span>
+        ${o.oculto?'<span class="badge-oculto">Oculto en web</span>':''}
       </div>
       <div class="obit-item-actions">
+        <button class="btn-toggle-hide" onclick="toggleOculto(${i})" title="${o.oculto?'Mostrar en web':'Ocultar de web'}">${o.oculto?'👁 Mostrar':'🚫 Ocultar'}</button>
         <button class="btn-edit" onclick="openForm(${i})">Editar</button>
         <button class="btn-delete" onclick="deleteObit(${i})">Eliminar</button>
       </div>
@@ -525,6 +546,7 @@ function openForm(index = -1) {
     document.getElementById('f-fecha-corta').value = o.fecha_corta || '';
     document.getElementById('f-fecha').value = o.fecha || '';
     document.getElementById('f-fecha-ingreso').value = o.fecha_ingreso || '';
+    document.getElementById('f-fecha-fin').value = o.fecha_fin || '';
     document.getElementById('f-fecha-salida').value = o.fecha_salida || '';
     document.getElementById('f-servicio-religioso').value = o.servicio_religioso || '';
     document.getElementById('f-destino').value = o.destino || '';
@@ -541,6 +563,7 @@ function openForm(index = -1) {
     document.getElementById('f-fecha-corta').value = '';
     document.getElementById('f-fecha').value = '';
     document.getElementById('f-fecha-ingreso').value = '';
+    document.getElementById('f-fecha-fin').value = '';
     document.getElementById('f-fecha-salida').value = '';
     document.getElementById('f-servicio-religioso').value = '';
     document.getElementById('f-destino').value = '';
@@ -643,7 +666,9 @@ async function saveObit() {
     fecha_corta: fechaCorta,
     fecha: document.getElementById('f-fecha').value.trim() || fechaCorta,
     fecha_ingreso: document.getElementById('f-fecha-ingreso').value.trim(),
+    fecha_fin: document.getElementById('f-fecha-fin').value.trim(),
     fecha_salida: document.getElementById('f-fecha-salida').value.trim(),
+    oculto: editIndex >= 0 ? (obits[editIndex].oculto || false) : false,
     servicio_religioso: document.getElementById('f-servicio-religioso').value.trim(),
     destino: document.getElementById('f-destino').value.trim(),
     sucursal: suc,
@@ -697,6 +722,30 @@ async function deleteObit(index) {
     }
   } catch(e) {
     obits.splice(index, 0, removed);
+    toast('Error de conexión', 'error');
+  }
+  showSaving(false);
+}
+
+// ── OCULTAR / MOSTRAR ──
+async function toggleOculto(index) {
+  obits[index].oculto = !obits[index].oculto;
+  const nombre = obits[index].nombre;
+  const accion = obits[index].oculto ? 'Ocultar' : 'Mostrar';
+  showSaving(true);
+  try {
+    const result = await apiPut(FILE, JSON.stringify(obits, null, 2), fileSha,
+      `${accion} obituario: ${nombre}`);
+    if (result.content) {
+      fileSha = result.content.sha;
+      toast(obits[index].oculto ? 'Oculto de la web' : 'Visible en la web', 'success');
+      renderList();
+    } else {
+      obits[index].oculto = !obits[index].oculto;
+      toast('Error al guardar. Verifica el token.', 'error');
+    }
+  } catch(e) {
+    obits[index].oculto = !obits[index].oculto;
     toast('Error de conexión', 'error');
   }
   showSaving(false);
