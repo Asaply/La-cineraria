@@ -1,5 +1,21 @@
 [
   {
+    "nombre": "SRA CARMEN CANO QUEZADA",
+    "fecha_corta": "01 MAYO 2026",
+    "fecha": "01 MAYO 2026",
+    "fecha_ingreso": "30 ABRIL 2026",
+    "fecha_fin": "01 MAYO 2026",
+    "fecha_salida": "PENDIENTE",
+    "oculto": false,
+    "servicio_religioso": "PENDIENTE",
+    "destino": "LA PIEDAD",
+    "sucursal": "inalambrica",
+    "sala": "Sucursal Zarco · Sala 1",
+    "direccion": "C. Silvestre Terrazas #6606, Col. Inalámbrica, Chihuahua, Chih.",
+    "maps_url": "https://maps.google.com/?q=C.%20Silvestre%20Terrazas%20%236606%2C%20Col.%20Inal%C3%A1mbrica%2C%20Chihuahua%2C%20Chih.",
+    "foto": "https://raw.githubusercontent.com/Asaply/La-cineraria/main/fotos/1777563901737_2.png"
+  },
+  {
     "nombre": "SRA MA JOSEFINA MORALES GUERRERO",
     "fecha_corta": "25 ABRIL 2026",
     "fecha": "25 ABRIL 2026",
