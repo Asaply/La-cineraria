@@ -1,5 +1,21 @@
 [
   {
+    "nombre": "JESÚS OMAR ALOR ATHIE",
+    "fecha_corta": "06 MAYO 2026",
+    "fecha": "06 MAYO 2026",
+    "fecha_ingreso": "05 MAYO 2026",
+    "fecha_fin": "06 MAYO 2026",
+    "fecha_salida": "PENDIENTE",
+    "oculto": false,
+    "servicio_religioso": "PENDIENTE",
+    "destino": "PENDIENTE",
+    "sucursal": "inalambrica",
+    "sala": "Sucursal Zarco · Sala 1",
+    "direccion": "C. Silvestre Terrazas #6606, Col. Inalámbrica, Chihuahua, Chih.",
+    "maps_url": "https://maps.google.com/?q=C.%20Silvestre%20Terrazas%20%236606%2C%20Col.%20Inal%C3%A1mbrica%2C%20Chihuahua%2C%20Chih.",
+    "foto": "https://raw.githubusercontent.com/Asaply/La-cineraria/main/fotos/1777992778129_2.png"
+  },
+  {
     "nombre": "SR JESÚS MANUEL ARCINIEGA MARTÍNEZ",
     "fecha_corta": "05 MAYO 2026",
     "fecha": "05 MAYO 2026",
