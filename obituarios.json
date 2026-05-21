@@ -102,7 +102,7 @@
     "fecha_ingreso": "09 MAYO 2026",
     "fecha_fin": "10 MAYO 2026",
     "fecha_salida": "PENDIENTE",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "PENDIENTE",
     "destino": "PENDIENTE",
     "sucursal": "inalambrica",
