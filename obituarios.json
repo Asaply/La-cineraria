@@ -1,5 +1,21 @@
 [
   {
+    "nombre": "SRA RAMONA VELIA ORNELAS MATA",
+    "fecha_corta": "22 MAYO 2026",
+    "fecha": "22 MAYO 2026",
+    "fecha_ingreso": "21 MAYO 2026",
+    "fecha_fin": "22 MAYO 2026",
+    "fecha_salida": "PENDIENTE",
+    "oculto": false,
+    "servicio_religioso": "PENDIENTE",
+    "destino": "PENDIENTE",
+    "sucursal": "inalambrica",
+    "sala": "Sucursal Zarco · Sala 1",
+    "direccion": "C. Silvestre Terrazas #6606, Col. Inalámbrica, Chihuahua, Chih.",
+    "maps_url": "https://maps.google.com/?q=C.%20Silvestre%20Terrazas%20%236606%2C%20Col.%20Inal%C3%A1mbrica%2C%20Chihuahua%2C%20Chih.",
+    "foto": "https://raw.githubusercontent.com/Asaply/La-cineraria/main/fotos/1779375264256_Funerales_la_Cineraria.png"
+  },
+  {
     "nombre": "SRA JENIFER MEDINA HIDALGO",
     "fecha_corta": "22 MAYO 2026",
     "fecha": "22 MAYO 2026",
