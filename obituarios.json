@@ -70,7 +70,7 @@
     "fecha_ingreso": "10 MAYO 2026",
     "fecha_fin": "11 MAYO 2026",
     "fecha_salida": "13:00 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "EN CAPILLA",
     "destino": "CEMENTERIO COLINA",
     "sucursal": "norte",
