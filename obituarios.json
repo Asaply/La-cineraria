@@ -70,7 +70,7 @@
     "fecha_ingreso": "28 MAYO 2026",
     "fecha_fin": "29 MAYO 2026",
     "fecha_salida": "11:30 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "DIRECTO",
     "destino": "CEMENTERIO LA PIEDAD",
     "sucursal": "inalambrica",
