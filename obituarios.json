@@ -118,7 +118,7 @@
     "fecha_ingreso": "08 JUNIO 2026",
     "fecha_fin": "09 JUNIO 2026",
     "fecha_salida": "11:30 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "NUESTRA SEÑORA DEL CARMEN",
     "destino": "CEMENTERIO MUNICIPAL 1",
     "sucursal": "inalambrica",
