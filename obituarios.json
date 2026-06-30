@@ -1,5 +1,21 @@
 [
   {
+    "nombre": "SRA OLGA DIAZ TARANGO",
+    "fecha_corta": "30 JUNIO 2026",
+    "fecha": "30 JUNIO 2026",
+    "fecha_ingreso": "29 JUNIO 2023",
+    "fecha_fin": "30 JUNIO 2026",
+    "fecha_salida": "13:30 HRS",
+    "oculto": false,
+    "servicio_religioso": "SANTA GUADALUPE",
+    "destino": "EL CHARRO",
+    "sucursal": "inalambrica",
+    "sala": "Sucursal Zarco",
+    "direccion": "C. Silvestre Terrazas #6606, Col. Inalámbrica, Chihuahua, Chih.",
+    "maps_url": "https://maps.google.com/?q=C.%20Silvestre%20Terrazas%20%236606%2C%20Col.%20Inal%C3%A1mbrica%2C%20Chihuahua%2C%20Chih.",
+    "foto": "https://raw.githubusercontent.com/Asaply/La-cineraria/main/fotos/1782833137898_Funerales_la_Cineraria.png"
+  },
+  {
     "nombre": "BALDEMAR ANCHONDO MENDOZA",
     "fecha_corta": "26 JUNIO 2026",
     "fecha": "26 JUNIO 2026",
