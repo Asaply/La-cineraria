@@ -1,5 +1,21 @@
 [
   {
+    "nombre": "SR HECTOR MANUEL MORAN DUARTE",
+    "fecha_corta": "30 JUNIO 2026",
+    "fecha": "30 JUNIO 2026",
+    "fecha_ingreso": "29 JUNIO 2026",
+    "fecha_fin": "30 JUNIO 2026",
+    "fecha_salida": "13:00 HRS",
+    "oculto": false,
+    "servicio_religioso": "EN CAPILLA",
+    "destino": "CEMENTERIO VIDA PLENA",
+    "sucursal": "inalambrica",
+    "sala": "Sucursal Zarco ·",
+    "direccion": "C. Silvestre Terrazas #6606, Col. Inalámbrica, Chihuahua, Chih.",
+    "maps_url": "https://maps.google.com/?q=C.%20Silvestre%20Terrazas%20%236606%2C%20Col.%20Inal%C3%A1mbrica%2C%20Chihuahua%2C%20Chih.",
+    "foto": "https://raw.githubusercontent.com/Asaply/La-cineraria/main/fotos/1782833202223_Funerales_la_Cineraria.png"
+  },
+  {
     "nombre": "SRA OLGA DIAZ TARANGO",
     "fecha_corta": "30 JUNIO 2026",
     "fecha": "30 JUNIO 2026",
