@@ -198,7 +198,7 @@
     "fecha_ingreso": "11 JUNIO 2026",
     "fecha_fin": "12 JUNIO 2026",
     "fecha_salida": "14:15 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "SANTA TERESITA",
     "destino": "CEMENTERIO MUNICIPAL 1",
     "sucursal": "inalambrica",
