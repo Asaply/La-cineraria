@@ -214,7 +214,7 @@
     "fecha_ingreso": "11 JUNIO 2026",
     "fecha_fin": "12 JUNIO 2026",
     "fecha_salida": "11:30 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "SEÑOR DE LOS GUERREROS",
     "destino": "CEMENTERIO VIDA PLENA",
     "sucursal": "inalambrica",
