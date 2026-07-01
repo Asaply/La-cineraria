@@ -1,5 +1,21 @@
 [
   {
+    "nombre": "SRA MARIA MARQUEZ ARMENDARIZ",
+    "fecha_corta": "01 JULIO 2026",
+    "fecha": "01 JULIO 2026",
+    "fecha_ingreso": "30 JUNIO 2026",
+    "fecha_fin": "01 JULIO 2026",
+    "fecha_salida": "12:15 HRS",
+    "oculto": false,
+    "servicio_religioso": "SANTISIMA TRINIDAD",
+    "destino": "CREMACION",
+    "sucursal": "platinum",
+    "sala": "Capillas Platinum · Sala 1",
+    "direccion": "Av. Juárez #4300, Col. Arquitectos (antes Zona Dorada), Chihuahua, Chih.",
+    "maps_url": "https://maps.google.com/?q=Av.%20Ju%C3%A1rez%20%234300%2C%20Col.%20Arquitectos%20(antes%20Zona%20Dorada)%2C%20Chihuahua%2C%20Chih.",
+    "foto": "https://raw.githubusercontent.com/Asaply/La-cineraria/main/fotos/1782931835546_Funerales_la_Cineraria.png"
+  },
+  {
     "nombre": "SR HECTOR MANUEL MORAN DUARTE",
     "fecha_corta": "30 JUNIO 2026",
     "fecha": "30 JUNIO 2026",
