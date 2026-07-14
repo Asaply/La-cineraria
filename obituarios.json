@@ -182,7 +182,7 @@
     "fecha_ingreso": "19 JUNIO 2026",
     "fecha_fin": "20 JUNIO 2026",
     "fecha_salida": "PENDIENTE",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "PENDIENTE",
     "destino": "PENDIENTE",
     "sucursal": "inalambrica",
