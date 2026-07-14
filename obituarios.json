@@ -102,7 +102,7 @@
     "fecha_ingreso": "29 JUNIO 2023",
     "fecha_fin": "30 JUNIO 2026",
     "fecha_salida": "13:30 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "SANTA GUADALUPE",
     "destino": "EL CHARRO",
     "sucursal": "inalambrica",
