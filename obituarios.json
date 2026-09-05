@@ -6,7 +6,7 @@
     "fecha_ingreso": "30 AGOSTO 2026",
     "fecha_fin": "31 AGOSTO 2026",
     "fecha_salida": "PENDIENTE",
-    "oculto": true,
+    "oculto": false,
     "servicio_religioso": "PENDIENTE",
     "destino": "PENDIENTE",
     "sucursal": "inalambrica",
