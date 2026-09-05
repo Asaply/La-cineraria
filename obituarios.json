@@ -198,7 +198,7 @@
     "fecha_ingreso": "11 AGOSTO 2026",
     "fecha_fin": "12 AGOSTO 2026",
     "fecha_salida": "11:30 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "ASUNCION DE MARIA",
     "destino": "LA JUNTA",
     "sucursal": "norte",
