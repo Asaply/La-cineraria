@@ -246,7 +246,7 @@
     "fecha_ingreso": "04 AGOSTO 2026",
     "fecha_fin": "05 AGOSTO 2026",
     "fecha_salida": "11:30 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "SANTA ROSALIA",
     "destino": "SAN JUAN DE VERACRUZ",
     "sucursal": "inalambrica",
