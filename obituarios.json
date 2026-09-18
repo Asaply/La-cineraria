@@ -102,7 +102,7 @@
     "fecha_ingreso": "27 AGOSTO 2026",
     "fecha_fin": "28 AGOSTO 2026",
     "fecha_salida": "11:00 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "MA DE DOLORES",
     "destino": "PENDIENTE",
     "sucursal": "inalambrica",
