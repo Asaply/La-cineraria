@@ -38,7 +38,7 @@
     "fecha_ingreso": "10 SEPTIEMBRE 2026",
     "fecha_fin": "11 SEPTIEMBRE 2026",
     "fecha_salida": "PENDIENTE",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "PENDIENTE",
     "destino": "PENDIENTE",
     "sucursal": "norte",
