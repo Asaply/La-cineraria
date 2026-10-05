@@ -38,7 +38,7 @@
     "fecha_ingreso": "27 SEPTIEMBRE 2026",
     "fecha_fin": "28 SEPTIEMBRE 2026",
     "fecha_salida": "11:00 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "SANTA MARIA REYNA",
     "destino": "CEMENTERIO DOLORES",
     "sucursal": "inalambrica",
