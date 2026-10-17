@@ -118,7 +118,7 @@
     "fecha_ingreso": "04 OCTUBRE 2026",
     "fecha_fin": "05 OCTUBRE 2026",
     "fecha_salida": "11:15 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "SAN PEDRO APOSTOL",
     "destino": "CEMENTERIO COLINA",
     "sucursal": "inalambrica",
