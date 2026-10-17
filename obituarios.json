@@ -70,7 +70,7 @@
     "fecha_ingreso": "12 OCTUBRE 2026",
     "fecha_fin": "13 OCTUBRE 2026",
     "fecha_salida": "11:30 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "SANTA TERESITA",
     "destino": "CEMENTERIO JARDINES ETERNOS",
     "sucursal": "inalambrica",
