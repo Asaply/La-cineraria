@@ -70,7 +70,7 @@
     "fecha_ingreso": "28 OCTUBRE 2026",
     "fecha_fin": "29 OCTUBRE 2026",
     "fecha_salida": "14:45 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "CAPILLA JARDINES ETERNOS",
     "destino": "CEMENTERIO JARDINES ETERNOS",
     "sucursal": "inalambrica",
