@@ -166,7 +166,7 @@
     "fecha_ingreso": "20 OCTUBRE 2026",
     "fecha_fin": "21 OCTUBRE 2026",
     "fecha_salida": "16:15 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "SANTA MARIA REYNA",
     "destino": "SERVICIO DE CREMACIÓN",
     "sucursal": "inalambrica",
