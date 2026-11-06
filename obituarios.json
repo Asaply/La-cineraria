@@ -118,7 +118,7 @@
     "fecha_ingreso": "24 OCTUBRE 2026",
     "fecha_fin": "25 OCTUBRE 2026",
     "fecha_salida": "PENDIENTE",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "PENDIENTE",
     "destino": "PENDIENTE",
     "sucursal": "inalambrica",
