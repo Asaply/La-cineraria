@@ -102,7 +102,7 @@
     "fecha_ingreso": "04 NOVIEMBRE 2026",
     "fecha_fin": "05 NOVIEMBRE 2026",
     "fecha_salida": "15:30 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "CAPILLA",
     "destino": "CEMENTERIO VIDA PLENA",
     "sucursal": "inalambrica",
