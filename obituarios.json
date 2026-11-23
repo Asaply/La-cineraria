@@ -86,7 +86,7 @@
     "fecha_ingreso": "05 NOVIEMBRE 2026",
     "fecha_fin": "06 NOVIEMBRE 2026",
     "fecha_salida": "10:15 HRS",
-    "oculto": false,
+    "oculto": true,
     "servicio_religioso": "SAN FELIPE",
     "destino": "SERVICIO DE CREMACIÓN",
     "sucursal": "norte",
